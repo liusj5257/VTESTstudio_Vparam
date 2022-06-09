@@ -33,3 +33,4 @@
 
 /build
 *.vparam
+workspace.code-workspace
