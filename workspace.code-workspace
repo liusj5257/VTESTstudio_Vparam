@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+  "settings": {
+    "files.associations": {
+      "*.clang-format": "yaml",
+      "ostream": "cpp",
+      "CLOSE_PART_NORMAL.C": "cpp",
+      "cstring": "cpp"
+    }
+  }
+}
