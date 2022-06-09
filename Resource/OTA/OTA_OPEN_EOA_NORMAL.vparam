@@ -1,0 +1,44 @@
+Vector Parameter	1.0
+
+StructListSingleRecord
+
+StructName	OPEN_EOA_NORMAL
+ParameterName		PLG_tailgateOpenSts2	BCM_IgnitionSts	ESP_VehicleSpeedvalid	SPEED	CTRL	taigatests
+Type		Integer	Integer	Integer	Integer	Integer	String
+Info		背门状态	电源信号				
+Values		0	1	1	0	22	
+		0	0	0	100	31	
+		0	7	0	2	33	
+		0	3	1	100	34	
+		0	2	1	100	01	
+		0	4	1	5	31	
+		0	5	0	100	22	
+		8	2	0	0	34	
+		8	0	1	100	33	
+		8	1	0	100	01	
+		8	7	1	100	31	
+		8	3	0	2	01	
+		8	4	0	100	22	
+		8	6	1	5	33	
+		8	0	0	0	34	
+		8	0	0	100	01	
+		0	0	1	2	22	
+		8	1	0	5	33	
+		0	1	1	0	34	
+		8	1	1	2	31	
+		0	7	1	5	01	
+		0	7	0	0	22	
+		8	7	1	2	34	
+		8	3	0	5	22	
+		8	3	1	100	33	
+		8	3	1	0	31	
+		0	2	1	100	22	
+		8	2	1	2	33	
+		8	2	0	100	31	
+		0	4	0	100	01	
+		8	4	0	5	33	
+		8	4	0	100	34	
+		0	5	0	100	01	
+		8	6	1	100	34	
+		0	5	1	100	31	
+
