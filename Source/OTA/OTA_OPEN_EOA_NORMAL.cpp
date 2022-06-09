@@ -17,6 +17,7 @@ int main(int argc, char* argv[])
   return 0;
 }
 
+
 void adjust_data(int** A)
 {
   for (i = 0; i < N; i++)
@@ -30,6 +31,6 @@ void adjust_data(int** A)
     //   A[i][M] = 0;
     // }
     // else
-    A[i][M] = 0;
+    A[i][M] = 1;
   }
 }

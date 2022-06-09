@@ -9,7 +9,25 @@
       "*.clang-format": "yaml",
       "ostream": "cpp",
       "CLOSE_PART_NORMAL.C": "cpp",
-      "cstring": "cpp"
-    }
+      "cstring": "cpp",
+      "OPEN_EOA_NORMAL.C": "cpp",
+      "OPEN_EOA_UNLOCK.C": "cpp",
+      "OPEN_PART_NORMAL.C": "cpp",
+      "OPEN_PART_LAST.C": "cpp"
+    },
+    "files.exclude": {
+      "**/.git": true,
+      "**/.svn": true,
+      "**/.hg": true,
+      "**/CVS": true,
+      "**/.DS_Store": true,
+      "**/Thumbs.db": true,
+      "**/.classpath": true,
+      "**/.factorypath": true,
+      "**/.project": true,
+      "**/.settings": true,
+      "OTA": true
+    },
+    "explorerExclude.backup": null
   }
 }

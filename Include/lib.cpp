@@ -21,16 +21,6 @@ void output_data(FILE* fout, int** tt)
   fclose(fout);
   printf("success!");
 }
-// void fpath(FILE** fin, FILE** fout, FILE** fin2)
-// {
-//   if ((*fin = path_in) == NULL)
-//   {
-//     printf("can not open data file\n");
-//     exit(0);
-//   }
-//   *fin2 = path_in;
-//   *fout = path_out;
-// }
 
 int** init_data(int N, int M)
 {

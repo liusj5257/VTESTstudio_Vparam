@@ -30,6 +30,11 @@ void adjust_data(int** A)
     //   A[i][M] = 0;
     // }
     // else
-    A[i][M] = 0;
+    if (A[i][0] == 8)
+    {
+      A[i][M] = 1;
+    }
+    else
+      A[i][M] = 0;
   }
 }

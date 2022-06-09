@@ -30,6 +30,6 @@ void adjust_data(int** A)
     //   A[i][M] = 0;
     // }
     // else
-    A[i][M] = 0;
+    A[i][M] = 1;
   }
 }
