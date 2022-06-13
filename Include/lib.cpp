@@ -1,7 +1,7 @@
 #include "lib.h"
 int N = 0, M = 0;
 int i = 0, j = 0;
-char c[__CHAR_BUFFER]; //×Ö·û»º´æ
+char c[__CHAR_BUFFER]; //å­—ç¬¦ç¼“å­˜
 FILE* fin = 0;
 FILE* fout = 0;
 FILE* fin2 = 0;
@@ -50,7 +50,7 @@ void init_N(FILE* file)
       N++; /* code */
     }
   }
-  N -= 9; //?Êµ¼ÊÐÐÊý
+  N -= 9; //?å®žé™…è¡Œæ•°
   printf("N = %d\t", N);
   fclose(file);
   // M = 5;
@@ -129,8 +129,6 @@ void path(char fname[__CHAR_BUFFER], char path_in[__CHAR_BUFFER],
   char* fname2 = strstr(fname, "e\\") + 2;
   char* a = strrchr(fname2, '\\');
   *a = '/';
-  // char path_in[__CHAR_BUFFER] = PATH_IN;
-  // char path_out[__CHAR_BUFFER] = PATH_OUT;
   strcat(path_in, fname2);
   strcat(path_out, fname2);
   path_in[strlen(path_in) - 4] = '\0';
