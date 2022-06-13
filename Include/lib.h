@@ -17,6 +17,9 @@ extern void fpath(FILE** fin, FILE** fout, FILE** fin2);
 extern void path(char fname[__CHAR_BUFFER], char path_in[__CHAR_BUFFER],
                  char path_out[__CHAR_BUFFER]);
 extern void init_N(FILE* file);
+extern void char_out(int** tt);
+extern void path2(char path_in[__CHAR_BUFFER]);
+extern void adjust_csv(FILE* fout, int** tt);
 
 extern int N, M;
 extern int i, j;

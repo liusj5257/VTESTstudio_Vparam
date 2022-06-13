@@ -3,7 +3,7 @@
 char fname[] = __FILE__;
 char PATH_IN[__CHAR_BUFFER] = "../../Resource/";
 char PATH_OUT[__CHAR_BUFFER] = "../../Release/";
-
+// extern void adjust_csv(int** tt);
 int main(int argc, char* argv[])
 {
   // fpath(a, b, a2);
@@ -18,6 +18,24 @@ int main(int argc, char* argv[])
   adjust_csv(fout, tt);
   return 0;
 }
+
+void adjust_data(int** A)
+{
+  for (i = 0; i < N; i++)
+  {
+    // if ((A[i][0] == 1 || A[i][0] == 4) && //! open stop
+    //     (A[i][1] == 0 || A[i][1] == 1 || A[i][1] == 7 ||
+    //      A[i][1] == 2 || //! speed power_mode
+    //      A[i][1] == 4 || (A[i][1] == 3 && A[i][3] < 5 && A[i][2] == 1)) &&
+    //     A[i][4] == 2) //! success
+    // {
+    //   A[i][M] = 0;
+    // }
+    // else
+    A[i][M] = 1;
+  }
+}
+
 void adjust_csv(FILE* fout, int** tt)
 {
   char csv[N][4][__CHAR_BUFFER];
@@ -99,39 +117,19 @@ void adjust_csv(FILE* fout, int** tt)
     // strcat_s(csv[i][1], speed_valid[c]);
     // strcat_s(csv[i][1], speed[d]);
 
-    fprintf_s(fout, "%s,\"%s\",%s,", csv[i][0], csv[i][1], csv[i][2]);
+    fprintf_s(fout, "%s,\"%s\",\n,,%s,", csv[i][0], csv[i][1], csv[i][2]);
+    fprintf_s(fout, "背门位于大于或等于设定高度，不会响应开门或停止指令\n");
 
-    if (tt[i][1] == 0 || tt[i][1] == 1 || tt[i][1] == 7 || tt[i][1] == 2 ||
-        tt[i][1] == 4 || (tt[i][1] == 3 && tt[i][3] < 5 && tt[i][2] == 1))
-    {
-      fprintf_s(fout, "背门在反转区域运动过程中，电源模式/"
-                      "速度符合要求，响应控制指令停止\n");
-    }
-    else
-    {
-      fprintf_s(
-          fout,
-          "背门在反转区域运动过程中，切换电源模式/速度不合规，主动停止\n");
-    }
+    // printf_s("\n%s,%s,%s\n", csv[i][0], csv[i][1], csv[i][2]);
   }
 }
-void adjust_data(int** A)
-{
-  for (i = 0; i < N; i++)
-  {
-    if (A[i][4] == 33)
-    {
-      A[i][4] = 36;
-    }
-  }
-  for (i = 0; i < N; i++)
-  {
-    // if (A[i][1] == 0 || A[i][1] == 1 || A[i][1] == 7 || A[i][1] == 2 ||
-    //     A[i][1] == 4 || (A[i][1] == 3 && A[i][3] < 5 && A[i][2] == 1)) {
-    //   A[i][M] = 4;
-    // } else if (A[i][0] == 2) {
-    //   A[i][M] = 0;
-    // } else
-    A[i][M] = 4;
-  }
-}
+
+// void char_out(int** tt)
+// {
+//   char output[__CHAR_BUFFER][__CHAR_BUFFER];
+//   for (i = 0; i++; i < N)
+//   {
+//     fprintf(fout2, "123,,\n");
+//     fprintf(fout2, ",123,123\n");
+//   }
+// }

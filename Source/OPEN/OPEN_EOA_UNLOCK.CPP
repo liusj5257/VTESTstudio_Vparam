@@ -18,6 +18,29 @@ int main(int argc, char* argv[])
   adjust_csv(fout, tt);
   return 0;
 }
+
+void adjust_data(int** A)
+{
+  for (i = 0; i < N; i++)
+  {
+    if (A[i][4] == 1)
+    {
+      A[i][4] = 2;
+    }
+
+    if (A[i][0] == 8 &&
+        (A[i][1] == 0 || A[i][1] == 1 || A[i][1] == 7 || A[i][1] == 2 ||
+         A[i][1] == 4 || (A[i][1] == 3 && A[i][3] < 5 && A[i][2] == 1)))
+    {
+      A[i][M] = 1;
+    }
+    else
+    {
+      A[i][M] = A[i][0];
+    }
+  }
+}
+
 void adjust_csv(FILE* fout, int** tt)
 {
   char csv[N][4][__CHAR_BUFFER];
@@ -99,39 +122,18 @@ void adjust_csv(FILE* fout, int** tt)
     // strcat_s(csv[i][1], speed_valid[c]);
     // strcat_s(csv[i][1], speed[d]);
 
-    fprintf_s(fout, "%s,\"%s\",%s,", csv[i][0], csv[i][1], csv[i][2]);
-
-    if (tt[i][1] == 0 || tt[i][1] == 1 || tt[i][1] == 7 || tt[i][1] == 2 ||
-        tt[i][1] == 4 || (tt[i][1] == 3 && tt[i][3] < 5 && tt[i][2] == 1))
-    {
-      fprintf_s(fout, "背门在反转区域运动过程中，电源模式/"
-                      "速度符合要求，响应控制指令停止\n");
-    }
-    else
-    {
+    fprintf_s(fout, "%s,\"%s\",\n,,%s,", csv[i][0], csv[i][1], csv[i][2]);
+    // fprintf_s(fout, "背门位于大于或等于设定高度，不会响应开门或停止指令\n");
+    if (tt[i][M] == 1)
       fprintf_s(
           fout,
-          "背门在反转区域运动过程中，切换电源模式/速度不合规，主动停止\n");
-    }
-  }
-}
-void adjust_data(int** A)
-{
-  for (i = 0; i < N; i++)
-  {
-    if (A[i][4] == 33)
-    {
-      A[i][4] = 36;
-    }
-  }
-  for (i = 0; i < N; i++)
-  {
-    // if (A[i][1] == 0 || A[i][1] == 1 || A[i][1] == 7 || A[i][1] == 2 ||
-    //     A[i][1] == 4 || (A[i][1] == 3 && A[i][3] < 5 && A[i][2] == 1)) {
-    //   A[i][M] = 4;
-    // } else if (A[i][0] == 2) {
-    //   A[i][M] = 0;
-    // } else
-    A[i][M] = 4;
+          //"接收钥匙短按2次信号、脚踢信号、蓝牙钥匙开门信号，大屏背门开启信号，"
+          "大屏关闭/背门短按/蓝牙关门信号，背门处于"
+          "解锁强开区，电源模式/速度合规，则尾门打开至设定高度\n");
+    else if (tt[i][0] == 0)
+      fprintf_s(fout, "闭锁状态，无法控制背门开启\n");
+    else
+      fprintf_s(fout,
+                "电源模式ON但速度无效或速度大于等于5km，无法控制背门开启\n");
   }
 }

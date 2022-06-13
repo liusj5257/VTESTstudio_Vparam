@@ -1,7 +1,7 @@
 #include "lib.h"
 int N = 0, M = 0;
 int i = 0, j = 0;
-char c[__CHAR_BUFFER]; //å­—ç¬¦ç¼“å­˜
+char c[__CHAR_BUFFER]; //×Ö·û»º´æ
 FILE* fin = 0;
 FILE* fout = 0;
 FILE* fin2 = 0;
@@ -50,7 +50,7 @@ void init_N(FILE* file)
       N++; /* code */
     }
   }
-  N -= 9; //?å®žé™…è¡Œæ•°
+  N -= 9; //?Êµ¼ÊÐÐÊý
   printf("N = %d\t", N);
   fclose(file);
   // M = 5;
@@ -140,3 +140,14 @@ void path(char fname[__CHAR_BUFFER], char path_in[__CHAR_BUFFER],
   fin2 = fopen(path_in, "r+");
   fout = fopen(path_out, "w+");
 }
+
+void path2(char path_in[__CHAR_BUFFER])
+{
+  fin = fopen(path_in, "r");
+  printf_s("\n%s", path_in);
+  char* a = strrchr(path_in, '.');
+  strcpy(a, ".csv");
+  printf_s("\n%s", path_in);
+  fout = fopen(path_in, "w+");
+}
+

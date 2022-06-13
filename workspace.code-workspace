@@ -13,7 +13,9 @@
       "OPEN_EOA_NORMAL.C": "cpp",
       "OPEN_EOA_UNLOCK.C": "cpp",
       "OPEN_PART_NORMAL.C": "cpp",
-      "OPEN_PART_LAST.C": "cpp"
+      "OPEN_PART_LAST.C": "cpp",
+      "functional": "cpp",
+      "random": "cpp"
     },
     "files.exclude": {
       "**/.git": true,
