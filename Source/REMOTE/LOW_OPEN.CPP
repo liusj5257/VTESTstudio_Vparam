@@ -12,8 +12,8 @@ int main(int argc, char* argv[])
   init_str_M(c, __CHAR_BUFFER, fin); //?读取前置定义以及初始化M
   int** tt = init_data(N, M + 1);    //*建立数据库
   input_data(fin, tt);               //?读取数据
-  // adjust_data(tt);                   //?调整数据
-  // output_data(fout, tt);             //!输出文件
+  adjust_data(tt);                   //?调整数据
+  output_data(fout, tt);             //!输出文件
   path2(PATH_OUT);
   adjust_csv(fout, tt);
   return 0;
@@ -93,9 +93,10 @@ void adjust_csv(FILE* fout, int** tt)
   strcpy(target[2], "蓝牙关闭");
 
   char sig[10][100];
-  strcpy(sig[0], "蓝牙开启");
-  strcpy(sig[1], "蓝牙关闭");
-  strcpy(sig[2], "蓝牙开启");
+  strcpy(sig[0], "认证中");
+  strcpy(sig[1], "认证失败");
+  strcpy(sig[2], "认证成功");
+  strcpy(sig[3], "未认证");
 
   for (i = 0; i < N; i++)
   {
@@ -114,6 +115,8 @@ void adjust_csv(FILE* fout, int** tt)
     // Excel第二格
     strcat_s(csv[i][1], speed_valid[c]);
     strcat_s(csv[i][1], speed[d]);
+    strcat_s(csv[i][1], "\n");
+    strcat_s(csv[i][1], sig[e]);
     strcat_s(csv[i][1],
              "\n处于正常工作电压范围\n无错误工况（如热保护、通讯故障等）");
     // Excel第三格
@@ -126,14 +129,32 @@ void adjust_csv(FILE* fout, int** tt)
     // strcat_s(csv[i][1], speed[d]);
 
     fprintf_s(fout, "%s,\"%s\",%s,", csv[i][0], csv[i][1], csv[i][2]);
-    if (tt[i][M] == 0)
-      fprintf_s(
-          fout,
-          //"接收钥匙短按2次信号、脚踢信号、蓝牙钥匙开门信号，大屏背门开启信号，"
-          "电源模式/速度合规，尾门关闭至闭锁状态"
-          "\n");
+    if ((tt[i][0] == 0 || tt[i][0] == 8) && //! open stop
+        (tt[i][1] == 0 || tt[i][1] == 1 || tt[i][1] == 7 ||
+         tt[i][1] == 2 || //! speed power_mode
+         tt[i][1] == 4 || (tt[i][1] == 3 && tt[i][3] < 5 && tt[i][2] == 1)) &&
+        tt[i][4] == 2) //! success
+    {
+      fprintf_s(fout, "认证成功且电源速度合规，背门响应开启至小角度打开状态\n");
+    }
+
+    else if (tt[i][4] != 2)
+    {
+      fprintf_s(fout, "认证不成功，背门不响应指令\n");
+    }
+    else if (tt[i][1] == 3 && tt[i][2] == 0)
+    {
+      fprintf_s(fout, "ON挡速度无效，背门不响应指令\n");
+    }
+    else if (tt[i][1] == 3 && tt[i][3] >= 5)
+    {
+      fprintf_s(fout, "ON挡超速，背门不响应指令\n");
+    }
+    else if (tt[i][1] == 5 || tt[i][1] == 6)
+    {
+      fprintf_s(fout, "invalid_valid电源模式，背门不响应指令\n");
+    }
     else
-      fprintf_s(fout, "电源模式/速度不合规，无法控制背门\n");
-    // printf_s("\n%s,%s,%s\n", csv[i][0], csv[i][1], csv[i][2]);
+      fprintf_s(fout, "此背门状态，不响应指令\n");
   }
 }
