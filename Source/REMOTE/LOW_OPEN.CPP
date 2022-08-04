@@ -23,11 +23,15 @@ void adjust_data(int** A)
 {
   for (i = 0; i < N; i++)
   {
-    if ((A[i][0] == 0 || A[i][0] == 8) && //! open stop
-        (A[i][1] == 0 || A[i][1] == 1 || A[i][1] == 7 ||
-         A[i][1] == 2 || //! speed power_mode
-         A[i][1] == 4 || (A[i][1] == 3 && A[i][3] < 5 && A[i][2] == 1)) &&
-        A[i][4] == 2) //! success
+    if (A[i][0] == 1 || A[i][0] == 4)
+    {
+      A[i][M] = A[i][0];
+    }
+    else if ((A[i][0] == 0 || A[i][0] == 8) && //! open stop
+             (A[i][1] == 0 || A[i][1] == 1 || A[i][1] == 7 ||
+              A[i][1] == 2 || //! speed power_mode
+              A[i][1] == 4 || (A[i][1] == 3 && A[i][3] < 5 && A[i][2] == 1)) &&
+             A[i][4] == 2) //! success
     {
       A[i][M] = 4;
     }
@@ -62,15 +66,15 @@ void adjust_csv(FILE* fout, int** tt)
   strcpy(bcm[6], "invalid_valid状态_");
   strcpy(bcm[7], "invalid状态_");
 
-  char speed_valid[2][10];
-  strcpy(speed_valid[0], "速度无效:");
-  strcpy(speed_valid[1], "速度有效:");
+  char speed_valid[2][40];
+  strcpy(speed_valid[0], "速度无效且");
+  strcpy(speed_valid[1], "速度有效且");
 
   char speed[101][40];
   strcpy(speed[0], "\t0km/h");
-  strcpy(speed[2], "\t2km/h");
+  strcpy(speed[2], "\t小于5km/h");
   strcpy(speed[5], "\t5km/h");
-  strcpy(speed[100], "100km/h");
+  strcpy(speed[100], "大于5km/h");
 
   char ctrl[45][40];
   strcpy(ctrl[1], "蓝牙开启");
@@ -129,32 +133,33 @@ void adjust_csv(FILE* fout, int** tt)
     // strcat_s(csv[i][1], speed[d]);
 
     fprintf_s(fout, "%s,\"%s\",%s,", csv[i][0], csv[i][1], csv[i][2]);
+
     if ((tt[i][0] == 0 || tt[i][0] == 8) && //! open stop
         (tt[i][1] == 0 || tt[i][1] == 1 || tt[i][1] == 7 ||
          tt[i][1] == 2 || //! speed power_mode
          tt[i][1] == 4 || (tt[i][1] == 3 && tt[i][3] < 5 && tt[i][2] == 1)) &&
         tt[i][4] == 2) //! success
     {
-      fprintf_s(fout, "认证成功且电源速度合规，背门响应开启至小角度打开状态\n");
+      fprintf_s(fout, "蜂鸣器间鸣，背门响应开启至小角度打开状态\n");
     }
 
-    else if (tt[i][4] != 2)
-    {
-      fprintf_s(fout, "认证不成功，背门不响应指令\n");
-    }
-    else if (tt[i][1] == 3 && tt[i][2] == 0)
-    {
-      fprintf_s(fout, "ON挡速度无效，背门不响应指令\n");
-    }
-    else if (tt[i][1] == 3 && tt[i][3] >= 5)
-    {
-      fprintf_s(fout, "ON挡超速，背门不响应指令\n");
-    }
-    else if (tt[i][1] == 5 || tt[i][1] == 6)
-    {
-      fprintf_s(fout, "invalid_valid电源模式，背门不响应指令\n");
-    }
+    // else if (tt[i][4] != 2)
+    // {
+    //   fprintf_s(fout, "背门不响应指令\n");
+    // }
+    // else if (tt[i][1] == 3 && tt[i][2] == 0)
+    // {
+    //   fprintf_s(fout, "背门不响应指令\n");
+    // }
+    // else if (tt[i][1] == 3 && tt[i][3] >= 5)
+    // {
+    //   fprintf_s(fout, "背门不响应指令\n");
+    // }
+    // else if (tt[i][1] == 5 || tt[i][1] == 6)
+    // {
+    //   fprintf_s(fout, "背门不响应指令\n");
+    // }
     else
-      fprintf_s(fout, "此背门状态，不响应指令\n");
+      fprintf_s(fout, "背门不响应指令\n");
   }
 }

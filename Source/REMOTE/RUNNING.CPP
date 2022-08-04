@@ -35,23 +35,29 @@ void adjust_data(int** A)
     // {
     //   A[i][M] = A[i][0];
     // }
-    if (A[i][0] == 2) A[i][M] = 0;
-    if (A[i][0] == 3) A[i][M] = 1;
-    if (A[i][1] == 3 && A[i][2] == 0)
-    {
+    if (A[i][5] == 33) A[i][5] = 36;
+    if (A[i][5] != 12 && A[i][5] != 13)
       A[i][M] = 4;
-    }
+    else if ((A[i][5] == 12 || A[i][5] == 13) &&
+             (A[i][0] == 2 || A[i][0] == 22))
+      A[i][M] = 0;
+    else if ((A[i][5] == 12 || A[i][5] == 13) && (A[i][0] == 3))
+      A[i][M] = 1;
+    else if ((A[i][5] == 12 || A[i][5] == 13) && (A[i][0] == 33))
+      A[i][M] = 4;
   }
 }
 
 void adjust_csv(FILE* fout, int** tt)
 {
   char csv[N][4][__CHAR_BUFFER];
-  char sts[9][__CHAR_BUFFER];
+  char sts[35][__CHAR_BUFFER];
   strcpy(sts[0], "闭锁状态_");
   strcpy(sts[1], "大于或等于设定高度_");
-  strcpy(sts[2], "正在关门_");
-  strcpy(sts[3], "正在开门_");
+  strcpy(sts[2], "正在关门_本地_");
+  strcpy(sts[3], "正在开门_本地_");
+  strcpy(sts[22], "正在关门_远程_");
+  strcpy(sts[33], "正在开门_远程_");
   strcpy(sts[4], "停止状态_");
   strcpy(sts[5], "闭锁不完整_");
   strcpy(sts[6], "正在上锁_");
@@ -68,15 +74,15 @@ void adjust_csv(FILE* fout, int** tt)
   strcpy(bcm[6], "invalid_valid状态_");
   strcpy(bcm[7], "invalid状态_");
 
-  char speed_valid[2][10];
-  strcpy(speed_valid[0], "速度无效:");
-  strcpy(speed_valid[1], "速度有效:");
+  char speed_valid[2][40];
+  strcpy(speed_valid[0], "速度无效且");
+  strcpy(speed_valid[1], "速度有效且");
 
   char speed[101][40];
   strcpy(speed[0], "\t0km/h");
-  strcpy(speed[2], "\t2km/h");
+  strcpy(speed[2], "\t小于5km/h");
   strcpy(speed[5], "\t5km/h");
-  strcpy(speed[100], "100km/h");
+  strcpy(speed[100], "大于5km/h");
 
   char ctrl[45][40];
   strcpy(ctrl[1], "蓝牙开启");
@@ -135,19 +141,29 @@ void adjust_csv(FILE* fout, int** tt)
     // strcat_s(csv[i][1], speed[d]);
 
     fprintf_s(fout, "%s,\"%s\",%s,", csv[i][0], csv[i][1], csv[i][2]);
-    if (tt[i][M] == 0)
-    {
-      fprintf_s(fout,
-                "受到本地背门控制命令，背门不响应远程指令，关闭至闭锁状态\n");
-    }
-    else if (tt[i][M] == 1)
-    {
-      fprintf_s(fout,
-                "受到本地背门控制命令，背门不响应远程指令，打开至最大高度\n");
-    }
-    else if (tt[i][M] == 4)
-    {
-      fprintf_s(fout, "电源ON，速度无效，背门主动停止\n");
-    }
+
+    if (tt[i][5] != 12 && tt[i][5] != 13)
+      fprintf_s(fout, "响应本地指令，尾门停止\n");
+    else if (tt[i][5] == 12 ||
+             tt[i][5] == 13 && (tt[i][0] == 2 || tt[i][0] == 22))
+      fprintf_s(fout, "不响应远程指令\n");
+    else if (tt[i][5] == 12 ||
+             tt[i][5] == 13 && (tt[i][0] == 3 || tt[i][0] == 33))
+      fprintf_s(fout, "不响应远程指令\n");
+
+    // if (tt[i][M] == 0)
+    // {
+    //   fprintf_s(fout,
+    //             "受到本地背门控制命令，背门不响应远程指令，关闭至闭锁状态\n");
+    // }
+    // else if (tt[i][M] == 1)
+    // {
+    //   fprintf_s(fout,
+    //             "受到本地背门控制命令，背门不响应远程指令，打开至最大高度\n");
+    // }
+    // else if (tt[i][M] == 4)
+    // {
+    //   fprintf_s(fout, "电源ON，速度无效，背门主动停止\n");
+    // }
   }
 }

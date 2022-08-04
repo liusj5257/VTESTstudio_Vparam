@@ -43,15 +43,15 @@ void adjust_csv(FILE* fout, int** tt)
   strcpy(bcm[6], "invalid_valid状态_");
   strcpy(bcm[7], "invalid状态_");
 
-  char speed_valid[2][10];
-  strcpy(speed_valid[0], "速度无效:");
-  strcpy(speed_valid[1], "速度有效:");
+  char speed_valid[2][40];
+  strcpy(speed_valid[0], "速度无效且");
+  strcpy(speed_valid[1], "速度有效且");
 
   char speed[101][40];
   strcpy(speed[0], "\t0km/h");
-  strcpy(speed[2], "\t2km/h");
+  strcpy(speed[2], "\t小于5km/h");
   strcpy(speed[5], "\t5km/h");
-  strcpy(speed[100], "100km/h");
+  strcpy(speed[100], "大于5km/h");
 
   char ctrl[45][40];
   strcpy(ctrl[1], "蓝牙开启");
@@ -112,14 +112,14 @@ void adjust_csv(FILE* fout, int** tt)
     fprintf_s(fout, "%s,\"%s\",%s,", csv[i][0], csv[i][1], csv[i][2]);
     if (tt[i][M] == 0)
     {
-      fprintf_s(fout, "电源/速度/认证合规，背门响应远程指令，关闭至闭锁状态\n");
+      fprintf_s(fout, "蜂鸣器间鸣，背门响应关闭至闭锁状态\n");
     }
     else if (tt[i][M] == 8)
     {
-      fprintf_s(fout, "强开区，背门不响应远程指令\n");
+      fprintf_s(fout, "背门不响应远程指令\n");
     }
     else
-      fprintf_s(fout, "电源/速度/认证不符合，背门不响应远程指令\n");
+      fprintf_s(fout, "背门不响应远程指令\n");
   }
 }
 void adjust_data(int** A)

@@ -35,7 +35,6 @@ void adjust_data(int** A)
     A[i][M] = 1;
   }
 }
-
 void adjust_csv(FILE* fout, int** tt)
 {
   char csv[N][4][__CHAR_BUFFER];
@@ -51,24 +50,24 @@ void adjust_csv(FILE* fout, int** tt)
   strcpy(sts[8], "解锁强开区_");
 
   char bcm[8][__CHAR_BUFFER];
-  strcpy(bcm[0], "DEFAULT状态_");
-  strcpy(bcm[1], "OFF状态_");
-  strcpy(bcm[2], "ACC状态_");
+  strcpy(bcm[0], "DEFAULT/OFF/ACC/START/INVAILD状态_");
+  strcpy(bcm[1], "DEFAULT/OFF/ACC/START/INVAILD状态_");
+  strcpy(bcm[2], "DEFAULT/OFF/ACC/START/INVAILD状态_");
   strcpy(bcm[3], "ON状态_");
-  strcpy(bcm[4], "START状态_");
+  strcpy(bcm[4], "DEFAULT/OFF/ACC/START/INVAILD状态_");
   strcpy(bcm[5], "invalid_valid状态_");
   strcpy(bcm[6], "invalid_valid状态_");
   strcpy(bcm[7], "invalid状态_");
 
-  char speed_valid[2][10];
-  strcpy(speed_valid[0], "速度无效:");
-  strcpy(speed_valid[1], "速度有效:");
+  char speed_valid[2][40];
+  strcpy(speed_valid[0], "速度无效且");
+  strcpy(speed_valid[1], "速度有效且");
 
   char speed[101][40];
   strcpy(speed[0], "\t0km/h");
-  strcpy(speed[2], "\t2km/h");
+  strcpy(speed[2], "\t小于5km/h");
   strcpy(speed[5], "\t5km/h");
-  strcpy(speed[100], "100km/h");
+  strcpy(speed[100], "大于5km/h");
 
   char ctrl[45][40];
   strcpy(ctrl[1], "蓝牙开启");
@@ -117,7 +116,7 @@ void adjust_csv(FILE* fout, int** tt)
     // strcat_s(csv[i][1], speed_valid[c]);
     // strcat_s(csv[i][1], speed[d]);
 
-    fprintf_s(fout, "%s,\"%s\",\n,,%s,", csv[i][0], csv[i][1], csv[i][2]);
+    fprintf_s(fout, "%s,\"%s\",%s,", csv[i][0], csv[i][1], csv[i][2]);
     fprintf_s(fout, "背门位于大于或等于设定高度，不会响应开门或停止指令\n");
 
     // printf_s("\n%s,%s,%s\n", csv[i][0], csv[i][1], csv[i][2]);

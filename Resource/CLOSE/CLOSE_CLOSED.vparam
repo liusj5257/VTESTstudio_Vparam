@@ -4,27 +4,30 @@ StructListSingleRecord
 
 StructName	CLOSE_CLOSED
 ParameterName		PLG_tailgateOpenSts2	BCM_IgnitionSts	ESP_VehicleSpeedvalid	SPEED	CTRL	taigatests
-Type		Integer	Integer	Integer	Integer	Integer	String
+Type		Integer	Integer	Integer	Integer	Integer	Integer
 Info		背门状态	电源信号				
-Values	0	1	1	0	21	
-		0	0	0	100	23	
-		0	7	0	2	02	
-		0	3	1	100	02	
-		0	2	0	100	21	
-		0	4	1	5	23	
-		0	5	0	100	02	
-		0	0	1	0	02	
-		0	0	1	100	21	
-		0	1	0	100	02	
-		0	1	1	100	23	
-		0	7	1	100	21	
-		0	7	1	2	23	
-		0	3	0	5	21	
-		0	3	1	0	23	
-		0	2	1	2	23	
-		0	2	1	100	02	
-		0	4	0	100	21	
-		0	4	0	100	02	
-		0	6	1	5	21	
-		0	5	1	100	23	
+Values		0	0	0	2	02	0
+		0	1	0	2	21	0
+		0	7	0	2	23	0
+		0	0	0	100	02	0
+		0	1	0	100	21	0
+		0	7	0	100	23	0
+		0	0	1	2	02	0
+		0	1	1	2	21	0
+		0	7	1	2	23	0
+		0	0	1	100	02	0
+		0	1	1	100	21	0
+		0	7	1	100	23	0
+		0	3	0	2	02	0
+		0	3	0	2	21	0
+		0	3	0	2	23	0
+		0	3	0	100	02	0
+		0	3	0	100	21	0
+		0	3	0	100	23	0
+		0	3	1	2	02	0
+		0	3	1	2	21	0
+		0	3	1	2	23	0
+		0	3	1	100	02	0
+		0	3	1	100	21	00
+		0	3	1	100	23	0
 

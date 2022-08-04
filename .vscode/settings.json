@@ -105,5 +105,19 @@
     "-I<你的工程目录>",
     "-I<Qt目录下你所调用库的所在路径>"
   ],
-  "cmake.sourceDirectory": "${workspaceFolder}/."
+  "cmake.sourceDirectory": "${workspaceFolder}/.",
+  "cmake.generator": "MinGW Makefiles",
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/.classpath": true,
+    "**/.factorypath": true,
+    "**/.project": true,
+    "**/.settings": true
+  },
+  "explorerExclude.backup": {}
 }

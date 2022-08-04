@@ -18,14 +18,21 @@ int main(int argc, char* argv[])
   adjust_csv(fout, tt);
   return 0;
 }
-
 void adjust_csv(FILE* fout, int** tt)
 {
   char csv[N][4][__CHAR_BUFFER];
-  char sts[9][__CHAR_BUFFER];
-
-  strcpy(sts[1], "上次关闭_");
-  strcpy(sts[2], "上次开门_");
+  char sts[35][__CHAR_BUFFER];
+  strcpy(sts[0], "闭锁状态_");
+  strcpy(sts[1], "大于或等于设定高度_");
+  strcpy(sts[2], "正在关门_");
+  strcpy(sts[3], "正在开门_");
+  strcpy(sts[4], "停止状态_");
+  strcpy(sts[5], "闭锁不完整_");
+  strcpy(sts[6], "正在上锁_");
+  strcpy(sts[7], "正在解锁_");
+  strcpy(sts[8], "解锁强开区_");
+  strcpy(sts[22], "正在关门_");
+  strcpy(sts[33], "正在开门_");
 
   char bcm[8][__CHAR_BUFFER];
   strcpy(bcm[0], "DEFAULT/OFF/ACC/START/INVAILD状态_");
@@ -35,7 +42,7 @@ void adjust_csv(FILE* fout, int** tt)
   strcpy(bcm[4], "DEFAULT/OFF/ACC/START/INVAILD状态_");
   strcpy(bcm[5], "invalid_valid状态_");
   strcpy(bcm[6], "invalid_valid状态_");
-  strcpy(bcm[7], "invalid状态_");
+  strcpy(bcm[7], "DEFAULT/OFF/ACC/START/INVAILD状态_");
 
   char speed_valid[2][40];
   strcpy(speed_valid[0], "速度无效且");
@@ -93,40 +100,34 @@ void adjust_csv(FILE* fout, int** tt)
     // strcat_s(csv[i][1], "\"");
     // strcat_s(csv[i][1], speed_valid[c]);
     // strcat_s(csv[i][1], speed[d]);
-    fprintf_s(fout, "%s,\"%s\",%s,", csv[i][0], csv[i][1], csv[i][2]);
-    if (tt[i][M] == 1)
-      fprintf_s(
-          fout,
-          //"接收钥匙短按2次信号、脚踢信号、蓝牙钥匙开门信号，大屏背门开启信号，"
-          "蜂鸣器间鸣，尾门打开至设定高度\n");
-    else if (tt[i][M] == 0)
-      fprintf_s(fout, "蜂鸣器间鸣，尾门关闭至设"
-                      "定高度\n");
-    else
-      fprintf_s(fout, "背门无响应\n");
-  }
-  // printf_s("\n%s,%s,%s\n", csv[i][0], csv[i][1], csv[i][2]);
-}
 
+    fprintf_s(fout, "%s,\"%s\",%s,", csv[i][0], csv[i][1], csv[i][2]);
+
+    if (1)
+    {
+      fprintf_s(fout, "尾门不响应控制指令\n");
+    }
+  }
+}
 void adjust_data(int** A)
 {
   for (i = 0; i < N; i++)
   {
-    if (A[i][0] == 1 &&
-        (A[i][1] == 0 || A[i][1] == 1 || A[i][1] == 7 || A[i][1] == 2 ||
-         A[i][1] == 4 || (A[i][1] == 3 && A[i][3] < 5 && A[i][2] == 1)))
+    if (A[i][4] == 33)
     {
-      A[i][M] = 1;
+      A[i][4] = 36;
     }
-    else if (A[i][0] == 2 &&
-             (A[i][1] == 0 || A[i][1] == 1 || A[i][1] == 7 || A[i][1] == 2 ||
-              A[i][1] == 4 || (A[i][1] == 3 && A[i][3] < 5 && A[i][2] == 1)))
+  }
+  for (i = 0; i < N; i++)
+  {
+    // if (A[i][1] == 0 || A[i][1] == 1 || A[i][1] == 7 || A[i][1] == 2 ||
+    //     A[i][1] == 4 || (A[i][1] == 3 && A[i][3] < 5 && A[i][2] == 1)) {
+    //   A[i][M] = 4;
+    if (A[i][0] == 22)
     {
       A[i][M] = 0;
     }
     else
-    {
-      A[i][M] = 4;
-    }
+      A[i][M] = 1;
   }
 }
