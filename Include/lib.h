@@ -1,12 +1,15 @@
 #ifndef _MY_LIB__
 #define _MY_LIB__
 
-#include <cstdio>
-#include <cstdlib>
-#include <cstring>
-#include <iostream>
+// #include <cstdio>
+// #include <cstdlib>
+// #include <cstring>
+// #include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-using namespace std;
+// using namespace std;
 #define __CHAR_BUFFER 1000
 extern void adjust_data(int** A);
 extern void output_data(FILE* fout, int** tt);

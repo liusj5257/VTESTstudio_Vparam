@@ -19,29 +19,6 @@ int main(int argc, char* argv[])
   return 0;
 }
 
-void adjust_data(int** A)
-{
-  for (i = 0; i < N; i++)
-  {
-    if (A[i][0] == 1 || A[i][0] == 4)
-    {
-      A[i][M] = A[i][0];
-    }
-    else if ((A[i][0] == 0 || A[i][0] == 8) && //! open stop
-             (A[i][1] == 0 || A[i][1] == 1 || A[i][1] == 7 ||
-              A[i][1] == 2 || //! speed power_mode
-              A[i][1] == 4 || (A[i][1] == 3 && A[i][3] < 5 && A[i][2] == 1)) &&
-             A[i][4] == 2) //! success
-    {
-      A[i][M] = 4;
-    }
-    else
-    {
-      A[i][M] = A[i][0];
-    }
-  }
-}
-
 void adjust_csv(FILE* fout, int** tt)
 {
   char csv[N][4][__CHAR_BUFFER];
@@ -114,52 +91,52 @@ void adjust_csv(FILE* fout, int** tt)
 
     // Excel第一格
     strcpy(csv[i][0], sts[a]);
-    strcat_s(csv[i][0], bcm[b]);
-    strcat_s(csv[i][0], ctrl[f]);
+    strcat(csv[i][0], bcm[b]);
+    strcat(csv[i][0], ctrl[f]);
     // Excel第二格
-    strcat_s(csv[i][1], speed_valid[c]);
-    strcat_s(csv[i][1], speed[d]);
-    strcat_s(csv[i][1], "\n");
-    strcat_s(csv[i][1], sig[e]);
-    strcat_s(csv[i][1],
-             "\n处于正常工作电压范围\n无错误工况（如热保护、通讯故障等）");
+    strcat(csv[i][1], speed_valid[c]);
+    strcat(csv[i][1], speed[d]);
+    strcat(csv[i][1], "\n");
+    strcat(csv[i][1], sig[e]);
+    strcat(csv[i][1],
+           "\n处于正常工作电压范围\n无错误工况（如热保护、通讯故障等）");
     // Excel第三格
     strcpy(csv[i][2], "发送");
-    strcat_s(csv[i][2], ctrl[f]);
-    strcat_s(csv[i][2], "信号");
+    strcat(csv[i][2], ctrl[f]);
+    strcat(csv[i][2], "信号");
     // Excel第四格  结论
     // strcat_s(csv[i][1], "\"");
     // strcat_s(csv[i][1], speed_valid[c]);
     // strcat_s(csv[i][1], speed[d]);
 
-    fprintf_s(fout, "%s,\"%s\",%s,", csv[i][0], csv[i][1], csv[i][2]);
-
-    if ((tt[i][0] == 0 || tt[i][0] == 8) && //! open stop
-        (tt[i][1] == 0 || tt[i][1] == 1 || tt[i][1] == 7 ||
-         tt[i][1] == 2 || //! speed power_mode
-         tt[i][1] == 4 || (tt[i][1] == 3 && tt[i][3] < 5 && tt[i][2] == 1)) &&
-        tt[i][4] == 2) //! success
+    fprintf(fout, "%s,\"%s\",%s,", csv[i][0], csv[i][1], csv[i][2]);
+    if (tt[i][M] == 0)
     {
-      fprintf_s(fout, "蜂鸣器间鸣，背门响应开启至小角度打开状态\n");
+      fprintf(fout, "蜂鸣器间鸣，背门响应关闭至闭锁状态\n");
     }
-
-    // else if (tt[i][4] != 2)
-    // {
-    //   fprintf_s(fout, "背门不响应指令\n");
-    // }
-    // else if (tt[i][1] == 3 && tt[i][2] == 0)
-    // {
-    //   fprintf_s(fout, "背门不响应指令\n");
-    // }
-    // else if (tt[i][1] == 3 && tt[i][3] >= 5)
-    // {
-    //   fprintf_s(fout, "背门不响应指令\n");
-    // }
-    // else if (tt[i][1] == 5 || tt[i][1] == 6)
-    // {
-    //   fprintf_s(fout, "背门不响应指令\n");
-    // }
+    else if (tt[i][M] == 8)
+    {
+      fprintf(fout, "背门不响应远程指令\n");
+    }
     else
-      fprintf_s(fout, "背门不响应指令\n");
+      fprintf(fout, "背门不响应远程指令\n");
+  }
+}
+void adjust_data(int** A)
+{
+  for (i = 0; i < N; i++)
+  {
+    if ((A[i][0] == 1 || A[i][0] == 4) && //! open stop
+        (A[i][1] == 0 || A[i][1] == 1 || A[i][1] == 7 ||
+         A[i][1] == 2 || //! speed power_mode
+         A[i][1] == 4 || (A[i][1] == 3 && A[i][3] < 5 && A[i][2] == 1)) &&
+        A[i][4] == 2) //! success
+    {
+      A[i][M] = 0;
+    }
+    else
+    {
+      A[i][M] = A[i][0];
+    }
   }
 }

@@ -3,7 +3,7 @@
 char fname[] = __FILE__;
 char PATH_IN[__CHAR_BUFFER] = "../../Resource/";
 char PATH_OUT[__CHAR_BUFFER] = "../../Release/";
-extern void adjust_csv(FILE* fout, int** tt);
+
 extern void adjust_csv(int** tt);
 int main(int argc, char* argv[])
 {

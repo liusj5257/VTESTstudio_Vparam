@@ -7,15 +7,16 @@ char PATH_OUT[__CHAR_BUFFER] = "../../Release/";
 int main(int argc, char* argv[])
 {
   // fpath(a, b, a2);
-  path(fname, PATH_IN, PATH_OUT);    //?Â·¾¶
-  init_N(fin2);                      //?³õÊ¼»¯N
-  init_str_M(c, __CHAR_BUFFER, fin); //?¶ÁÈ¡Ç°ÖÃ¶¨ÒåÒÔ¼°³õÊ¼»¯M
-  int** tt = init_data(N, M + 1);    //*½¨Á¢Êı¾İ¿â
-  input_data(fin, tt);               //?¶ÁÈ¡Êı¾İ
-  adjust_data(tt);                   //?µ÷ÕûÊı¾İ
-  output_data(fout, tt);             //!Êä³öÎÄ¼ş
+  path(fname, PATH_IN, PATH_OUT);    //?è·¯å¾„
+  init_N(fin2);                      //?åˆå§‹åŒ–N
+  init_str_M(c, __CHAR_BUFFER, fin); //?è¯»å–å‰ç½®å®šä¹‰ä»¥åŠåˆå§‹åŒ–M
+  int** tt = init_data(N, M + 1);    //*å»ºç«‹æ•°æ®åº“
+  input_data(fin, tt);               //?è¯»å–æ•°æ®
+  adjust_data(tt);                   //?è°ƒæ•´æ•°æ®
+  output_data(fout, tt);             //!è¾“å‡ºæ–‡ä»¶
   path2(PATH_OUT);
   adjust_csv(fout, tt);
+  //delete[] tt;
   return 0;
 }
 
@@ -36,55 +37,55 @@ void adjust_csv(FILE* fout, int** tt)
 {
   char csv[N][4][__CHAR_BUFFER];
   char sts[9][__CHAR_BUFFER];
-  strcpy(sts[0], "±ÕËø×´Ì¬_");
-  strcpy(sts[1], "´óÓÚ»òµÈÓÚÉè¶¨¸ß¶È_");
-  strcpy(sts[2], "ÕıÔÚ¹ØÃÅ_");
-  strcpy(sts[3], "ÕıÔÚ¿ªÃÅ_");
-  strcpy(sts[4], "Í£Ö¹×´Ì¬_");
-  strcpy(sts[5], "±ÕËø²»ÍêÕû_");
-  strcpy(sts[6], "ÕıÔÚÉÏËø_");
-  strcpy(sts[7], "ÕıÔÚ½âËø_");
-  strcpy(sts[8], "½âËøÇ¿¿ªÇø_");
+  strcpy(sts[0], "é—­é”çŠ¶æ€_");
+  strcpy(sts[1], "å¤§äºæˆ–ç­‰äºè®¾å®šé«˜åº¦_");
+  strcpy(sts[2], "æ­£åœ¨å…³é—¨_");
+  strcpy(sts[3], "æ­£åœ¨å¼€é—¨_");
+  strcpy(sts[4], "åœæ­¢çŠ¶æ€_");
+  strcpy(sts[5], "é—­é”ä¸å®Œæ•´_");
+  strcpy(sts[6], "æ­£åœ¨ä¸Šé”_");
+  strcpy(sts[7], "æ­£åœ¨è§£é”_");
+  strcpy(sts[8], "è§£é”å¼ºå¼€åŒº_");
 
   char bcm[8][__CHAR_BUFFER];
-  strcpy(bcm[0], "DEFAULT/OFF/ACC/START/INVAILD×´Ì¬_");
-  strcpy(bcm[1], "DEFAULT/OFF/ACC/START/INVAILD×´Ì¬_");
-  strcpy(bcm[2], "DEFAULT/OFF/ACC/START/INVAILD×´Ì¬_");
-  strcpy(bcm[3], "ON×´Ì¬_");
-  strcpy(bcm[4], "DEFAULT/OFF/ACC/START/INVAILD×´Ì¬_");
-  strcpy(bcm[5], "invalid_valid×´Ì¬_");
-  strcpy(bcm[6], "invalid_valid×´Ì¬_");
-  strcpy(bcm[7], "invalid×´Ì¬_");
+  strcpy(bcm[0], "DEFAULT/OFF/ACC/START/INVAILDçŠ¶æ€_");
+  strcpy(bcm[1], "DEFAULT/OFF/ACC/START/INVAILDçŠ¶æ€_");
+  strcpy(bcm[2], "DEFAULT/OFF/ACC/START/INVAILDçŠ¶æ€_");
+  strcpy(bcm[3], "ONçŠ¶æ€_");
+  strcpy(bcm[4], "DEFAULT/OFF/ACC/START/INVAILDçŠ¶æ€_");
+  strcpy(bcm[5], "invalid_validçŠ¶æ€_");
+  strcpy(bcm[6], "invalid_validçŠ¶æ€_");
+  strcpy(bcm[7], "invalidçŠ¶æ€_");
 
   char speed_valid[2][40];
-  strcpy(speed_valid[0], "ËÙ¶ÈÎŞĞ§ÇÒ");
-  strcpy(speed_valid[1], "ËÙ¶ÈÓĞĞ§ÇÒ");
+  strcpy(speed_valid[0], "é€Ÿåº¦æ— æ•ˆä¸”");
+  strcpy(speed_valid[1], "é€Ÿåº¦æœ‰æ•ˆä¸”");
 
   char speed[101][40];
   strcpy(speed[0], "\t0km/h");
-  strcpy(speed[2], "\tĞ¡ÓÚ5km/h");
+  strcpy(speed[2], "\tå°äº5km/h");
   strcpy(speed[5], "\t5km/h");
-  strcpy(speed[100], "´óÓÚ5km/h");
+  strcpy(speed[100], "å¤§äº5km/h");
 
   char ctrl[45][40];
-  strcpy(ctrl[1], "À¶ÑÀ¿ªÆô");
-  strcpy(ctrl[2], "À¶ÑÀ¹Ø±Õ");
-  strcpy(ctrl[12], "Ô¶³Ì¹Ø±Õ");
-  strcpy(ctrl[13], "Ô¶³ÌĞ¡½Ç¶È");
-  strcpy(ctrl[21], "´óÆÁ¹Ø±Õ");
-  strcpy(ctrl[22], "´óÆÁ¿ªÆô");
-  strcpy(ctrl[23], "´óÆÁÍ£Ö¹");
-  strcpy(ctrl[31], "±³ÃÅÍâ²¿¿ª¹Ø");
-  strcpy(ctrl[33], "Á½´ÎÔ¿³×¶Ì°´");
-  strcpy(ctrl[34], "½ÅÌßĞÅºÅ");
-  strcpy(ctrl[36], "Ò»´ÎÔ¿³×¶Ì°´");
-  strcpy(ctrl[40], "±³ÃÅ¶Ì°´");
-  strcpy(ctrl[41], "±³ÃÅ³¤°´");
-  strcpy(ctrl[42], "±³ÃÅ³¬³¤°´");
+  strcpy(ctrl[1], "è“ç‰™å¼€å¯");
+  strcpy(ctrl[2], "è“ç‰™å…³é—­");
+  strcpy(ctrl[12], "è¿œç¨‹å…³é—­");
+  strcpy(ctrl[13], "è¿œç¨‹å°è§’åº¦");
+  strcpy(ctrl[21], "å¤§å±å…³é—­");
+  strcpy(ctrl[22], "å¤§å±å¼€å¯");
+  strcpy(ctrl[23], "å¤§å±åœæ­¢");
+  strcpy(ctrl[31], "èƒŒé—¨å¤–éƒ¨å¼€å…³");
+  strcpy(ctrl[33], "ä¸¤æ¬¡é’¥åŒ™çŸ­æŒ‰");
+  strcpy(ctrl[34], "è„šè¸¢ä¿¡å·");
+  strcpy(ctrl[36], "ä¸€æ¬¡é’¥åŒ™çŸ­æŒ‰");
+  strcpy(ctrl[40], "èƒŒé—¨çŸ­æŒ‰");
+  strcpy(ctrl[41], "èƒŒé—¨é•¿æŒ‰");
+  strcpy(ctrl[42], "èƒŒé—¨è¶…é•¿æŒ‰");
 
   char target[10][100];
-  strcpy(target[1], "À¶ÑÀ¿ªÆô");
-  strcpy(target[2], "À¶ÑÀ¹Ø±Õ");
+  strcpy(target[1], "è“ç‰™å¼€å¯");
+  strcpy(target[2], "è“ç‰™å…³é—­");
 
   for (i = 0; i < N; i++)
   {
@@ -95,27 +96,27 @@ void adjust_csv(FILE* fout, int** tt)
     int e = tt[i][4]; // ctrl
     int f = tt[i][5]; // target
 
-    // ExcelµÚÒ»¸ñ
+    // Excelç¬¬ä¸€æ ¼
     strcpy(csv[i][0], sts[a]);
     strcat_s(csv[i][0], bcm[b]);
     strcat_s(csv[i][0], ctrl[e]);
-    // ExcelµÚ¶ş¸ñ
+    // Excelç¬¬äºŒæ ¼
     strcat_s(csv[i][1], speed_valid[c]);
     strcat_s(csv[i][1], speed[d]);
     strcat_s(csv[i][1],
-             "\n´¦ÓÚÕı³£¹¤×÷µçÑ¹·¶Î§\nÎŞ´íÎó¹¤¿ö£¨ÈçÈÈ±£»¤¡¢Í¨Ñ¶¹ÊÕÏµÈ£©");
-    // ExcelµÚÈı¸ñ
-    strcpy(csv[i][2], "·¢ËÍ");
+             "\nå¤„äºæ­£å¸¸å·¥ä½œç”µå‹èŒƒå›´\næ— é”™è¯¯å·¥å†µï¼ˆå¦‚çƒ­ä¿æŠ¤ã€é€šè®¯æ•…éšœç­‰ï¼‰");
+    // Excelç¬¬ä¸‰æ ¼
+    strcpy(csv[i][2], "å‘é€");
     strcat_s(csv[i][2], ctrl[e]);
-    strcat_s(csv[i][2], "ĞÅºÅ");
-    // ExcelµÚËÄ¸ñ  ½áÂÛ
+    strcat_s(csv[i][2], "ä¿¡å·");
+    // Excelç¬¬å››æ ¼  ç»“è®º
     // strcat_s(csv[i][1], "\"");
     // strcat_s(csv[i][1], speed_valid[c]);
     // strcat_s(csv[i][1], speed[d]);
 
     fprintf_s(fout, "%s,\"%s\",%s,", csv[i][0], csv[i][1], csv[i][2]);
 
-    fprintf_s(fout, "±³ÃÅ´¦ÓÚ±ÕËø×´Ì¬£¬²»ÏìÓ¦¹Ø±Õ/Í£Ö¹Ö¸Áî\n");
+    fprintf_s(fout, "èƒŒé—¨å¤„äºé—­é”çŠ¶æ€ï¼Œä¸å“åº”å…³é—­/åœæ­¢æŒ‡ä»¤\n");
     // printf_s("\n%s,%s,%s\n", csv[i][0], csv[i][1], csv[i][2]);
   }
 }
