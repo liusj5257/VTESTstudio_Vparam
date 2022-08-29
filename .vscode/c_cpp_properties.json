@@ -3,15 +3,14 @@
         {
             "name": "Win32",
             "includePath": [
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/Lib/**"
             ],
             "defines": [
                 "_DEBUG",
                 "UNICODE",
                 "_UNICODE",
                 "__CHAR_BUFFER"
-                // "__PATH_IN",
-                // "__PATH_OUT"
             ],
             "windowsSdkVersion": "10.0.19041.0",
             "cStandard": "c17",

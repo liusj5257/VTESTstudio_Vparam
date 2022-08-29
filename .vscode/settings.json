@@ -68,14 +68,13 @@
     "javascript": "node",
     "java": "cd $dir && javac $fileName && java $fileNameWithoutExt",
     //"c": "cd $dir && gcc $fileName -I ../F1_C/SOURCE/lib -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
-    "c": "cd $dir && gcc $fileName  -o ../../Debug/dev -g  && ../../Debug/dev",
+    "c": "cd $dir && ../../Bin/$fileNameWithoutExt",
     //?g++标准
     //"cpp": "cd $dir && g++ $fileName  ../../Include/lib.cpp -I ../../Include/ -o ../../Debug/dev -g  && ../../Debug/dev",
     //clangd
     "cpp": "cd $dir && ../../Bin/$fileNameWithoutExt",
     //"cpp": "cd $dir && g++ $fileName  -I ./lib/ -o ../build/$fileNameWithoutExt && ../build/$fileNameWithoutExt",
   },
-  "C_Cpp.intelliSenseEngine": "Enable",
   "code-runner.cwd": "E:/CANOE/F1/",
   "code-runner.fileDirectoryAsCwd": false,
   "C_Cpp.errorSquiggles": "Enabled",
@@ -105,5 +104,83 @@
     "-I<你的工程目录>",
     "-I<Qt目录下你所调用库的所在路径>"
   ],
-  "cmake.sourceDirectory": "${workspaceFolder}/."
+  "cmake.sourceDirectory": "${workspaceFolder}/.",
+  "cmake.generator": "MinGW Makefiles",
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/.classpath": true,
+    "**/.factorypath": true,
+    "**/.project": true,
+    "**/.settings": true
+  },
+  /**********
+   * Clangd *
+   **********/
+  // 关闭 C/C++ 提供的 IntelliSenseEngine
+  "C_Cpp.intelliSenseEngine": "Disabled",
+  // Clangd 运行参数(在终端/命令行输入 clangd --help-list-hidden 可查看更多)
+  "clangd.onConfigChanged": "restart",
+  "clangd.arguments": [
+    // 启用 Clang-Tidy 以提供「静态检查」
+    "--clang-tidy",
+    // compelie_commands.json 文件的目录位置(相对于工作区，由于 CMake 生成的该文件默认在 build 文件夹中，故设置为 build)
+    "--compile-commands-dir=build",
+    // 建议风格：打包(重载函数只会给出一个建议）；反可以设置为detailed
+    "--completion-style=bundled",
+    /**
+     * Read user and project configuration from YAML files.
+     * Project config is from a .clangd file in the project directory.
+     * User config is from clangd/config.yaml in the following directories:
+     *     Windows: %USERPROFILE%\AppData\Local
+     *     Mac OS: ~/Library/Preferences/
+     *     Others: $XDG_CONFIG_HOME, usually ~/.config
+     *
+     * 我所使用的配置：
+     * Diagnostics:
+     *   ClangTidy:
+     *     Add: ["*"]
+     *     Remove:
+     *       [
+     *         abseil*,
+     *         altera*,
+     *         fuchsia*,
+     *         llvmlib*,
+     *         zircon*,
+     *         google-readability-todo,
+     *         readability-braces-around-statements,
+     *         hicpp-braces-around-statements,
+     *       ]
+     * Index:
+     *   Background: Build
+     */
+    "--enable-config",
+    // 默认格式化风格: 谷歌开源项目代码指南（可用的有 LLVM, Google, Chromium, Mozilla, Webkit, Microsoft, GNU 等）
+    "--fallback-style=Google",
+    // 启用这项时，补全函数时，将会给参数提供占位符，键入后按 Tab 可以切换到下一占位符，乃至函数末
+    // 我选择禁用
+    "--function-arg-placeholders=false",
+    // 输入建议中，已包含头文件的项与还未包含头文件的项会以圆点加以区分
+    "--header-insertion-decorators",
+    // 允许补充头文件
+    "--header-insertion=iwyu",
+    // 让 Clangd 生成更详细的日志
+    "--log=verbose",
+    // pch优化的位置(memory 或 disk，选择memory会增加内存开销，但会提升性能)
+    "--pch-storage=memory",
+    // 输出的 JSON 文件更美观
+    "--pretty",
+    // 建议排序模型
+    "--ranking-model=heuristics",
+    // 同时开启的任务数量
+    "-j=12"
+  ],
+  // 自动检测 clangd 更新
+  "clangd.checkUpdates": true,
+  // clangd的snippets有很多的跳转点，不用这个就必须手动触发Intellisense了
+  "editor.suggest.snippetsPreventQuickSuggestions": false,
 }

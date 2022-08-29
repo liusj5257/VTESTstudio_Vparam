@@ -3,7 +3,7 @@
 char fname[] = __FILE__;
 char PATH_IN[__CHAR_BUFFER] = "../../Resource/";
 char PATH_OUT[__CHAR_BUFFER] = "../../Release/";
-
+extern void adjust_csv(FILE* fout, int** tt);
 extern void adjust_csv(int** tt);
 int main(int argc, char* argv[])
 {
@@ -30,7 +30,6 @@ void adjust_data(int** A)
   //}
   for (i = 0; i < N; i++)
   {
-    A[i][0] = 1;
     if (A[i][1] == 0 || A[i][1] == 1 || A[i][1] == 7 || A[i][1] == 2 ||
         A[i][1] == 4 || (A[i][1] == 3 && A[i][3] < 5 && A[i][2] == 1))
     {
@@ -38,7 +37,7 @@ void adjust_data(int** A)
     }
     else
     {
-      A[i][M] = 1;
+      A[i][M] = 4;
     }
   }
 }
@@ -66,6 +65,7 @@ void adjust_csv(FILE* fout, int** tt)
   strcpy(bcm[5], "invalid_valid状态_");
   strcpy(bcm[6], "invalid_valid状态_");
   strcpy(bcm[7], "invalid状态_");
+
   char speed_valid[2][40];
   strcpy(speed_valid[0], "速度无效且");
   strcpy(speed_valid[1], "速度有效且");

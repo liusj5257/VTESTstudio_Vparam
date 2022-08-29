@@ -1,0 +1,41 @@
+#include "lib.h"
+
+char fname[] = __FILE__;
+char PATH_IN[__CHAR_BUFFER] = "../../Resource/";
+char PATH_OUT[__CHAR_BUFFER] = "../../Release/";
+
+int main(int argc, char* argv[])
+{
+  // fpath(a, b, a2);
+  path(fname, PATH_IN, PATH_OUT);    //?初始化路径
+  init_N(fin2);                      //?初始化N
+  init_str_M(c, __CHAR_BUFFER, fin); //?初始化M
+  int** tt = init_data(N, M + 1);    //*
+  input_data(fin, tt);               //?
+  adjust_data(tt);                   //?
+  output_data(fout, tt);             //!
+  return 0;
+}
+
+void adjust_data(int** A)
+{
+  for (i = 0; i < N; i++)
+  {
+    if (A[i][0] == 1 || A[i][0] == 4)
+    {
+      A[i][M] = A[i][0];
+    }
+    else if (A[i][0] == 2)
+    {
+      A[i][M] = 0;
+    }
+    else if (A[i][0] == 3)
+    {
+      A[i][M] = 1;
+    }
+    if (A[i][0] == 3 && A[i][1] == 3 && A[i][2] == 1)
+    {
+      A[i][M] = A[i][0];
+    }
+  }
+}

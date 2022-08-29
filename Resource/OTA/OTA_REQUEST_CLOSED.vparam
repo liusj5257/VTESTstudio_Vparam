@@ -1,0 +1,41 @@
+Vector Parameter	1.0
+
+StructListSingleRecord
+
+StructName	CLOSED
+ParameterName		PLG_tailgateOpenSts2	BCM_IgnitionSts	ESP_VehicleSpeedvalid	SPEED	CTRL	taigatests
+Type		Integer	Integer	Integer	Integer	Integer	String
+Info		背门状态	电源信号				
+Values		0	2	1	0	41	
+		0	0	0	100	41	
+		0	1	0	2	41	
+		0	7	1	100	41	
+		0	3	1	5	41	
+		0	4	0	0	41	
+		0	5	0	100	41	
+		0	6	1	2	41	
+		1	1	1	100	41	
+		1	0	1	5	41	
+		1	7	0	0	41	
+		1	3	0	100	41	
+		1	2	0	100	41	
+		1	4	1	100	41	
+		1	5	1	2	41	
+		1	6	0	100	41	
+		4	7	1	100	41	
+		4	0	0	5	41	
+		4	1	0	0	41	
+		4	3	0	2	41	
+		4	2	0	100	41	
+		4	4	0	100	41	
+		4	5	0	5	41	
+		4	6	0	100	41	
+		8	6	1	0	41	
+		8	0	0	100	41	
+		8	1	0	2	41	
+		8	7	1	5	41	
+		8	3	0	100	41	
+		8	2	1	100	41	
+		8	4	0	100	41	
+		8	5	1	0	41	
+

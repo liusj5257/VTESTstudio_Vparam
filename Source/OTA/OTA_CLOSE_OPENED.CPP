@@ -4,7 +4,6 @@ char fname[] = __FILE__;
 char PATH_IN[__CHAR_BUFFER] = "../../Resource/";
 char PATH_OUT[__CHAR_BUFFER] = "../../Release/";
 
-
 int main(int argc, char* argv[])
 {
   // fpath(a, b, a2);

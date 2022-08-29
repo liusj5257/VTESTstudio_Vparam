@@ -3,8 +3,7 @@
 char fname[] = __FILE__;
 char PATH_IN[__CHAR_BUFFER] = "../../Resource/";
 char PATH_OUT[__CHAR_BUFFER] = "../../Release/";
-
-extern void adjust_csv(int** tt);
+// extern void adjust_csv(int** tt);
 int main(int argc, char* argv[])
 {
   // fpath(a, b, a2);
@@ -22,27 +21,20 @@ int main(int argc, char* argv[])
 
 void adjust_data(int** A)
 {
-  // for (i = 0; i < N; i++)
-  //{
-  //  if (A[i][4] == 22) {
-  //   A[i][4] = 21;
-  // }
-  //}
   for (i = 0; i < N; i++)
   {
-    A[i][0] = 1;
-    if (A[i][1] == 0 || A[i][1] == 1 || A[i][1] == 7 || A[i][1] == 2 ||
-        A[i][1] == 4 || (A[i][1] == 3 && A[i][3] < 5 && A[i][2] == 1))
-    {
-      A[i][M] = 0;
-    }
-    else
-    {
-      A[i][M] = 1;
-    }
+    // if ((A[i][0] == 1 || A[i][0] == 4) && //! open stop
+    //     (A[i][1] == 0 || A[i][1] == 1 || A[i][1] == 7 ||
+    //      A[i][1] == 2 || //! speed power_mode
+    //      A[i][1] == 4 || (A[i][1] == 3 && A[i][3] < 5 && A[i][2] == 1)) &&
+    //     A[i][4] == 2) //! success
+    // {
+    //   A[i][M] = 0;
+    // }
+    // else
+    A[i][M] = 1;
   }
 }
-
 void adjust_csv(FILE* fout, int** tt)
 {
   char csv[N][4][__CHAR_BUFFER];
@@ -66,6 +58,7 @@ void adjust_csv(FILE* fout, int** tt)
   strcpy(bcm[5], "invalid_valid状态_");
   strcpy(bcm[6], "invalid_valid状态_");
   strcpy(bcm[7], "invalid状态_");
+
   char speed_valid[2][40];
   strcpy(speed_valid[0], "速度无效且");
   strcpy(speed_valid[1], "速度有效且");
@@ -124,14 +117,18 @@ void adjust_csv(FILE* fout, int** tt)
     // strcat_s(csv[i][1], speed[d]);
 
     fprintf_s(fout, "%s,\"%s\",%s,", csv[i][0], csv[i][1], csv[i][2]);
-    if (tt[i][M] == 0)
-      fprintf_s(
-          fout,
-          //"接收钥匙短按2次信号、脚踢信号、蓝牙钥匙开门信号，大屏背门开启信号，"
-          "蜂鸣器间鸣，尾门关闭至闭锁状态"
-          "\n");
-    else
-      fprintf_s(fout, "背门无响应\n");
+    fprintf_s(fout, "背门位于大于或等于设定高度，不会响应开门或停止指令\n");
+
     // printf_s("\n%s,%s,%s\n", csv[i][0], csv[i][1], csv[i][2]);
   }
 }
+
+// void char_out(int** tt)
+// {
+//   char output[__CHAR_BUFFER][__CHAR_BUFFER];
+//   for (i = 0; i++; i < N)
+//   {
+//     fprintf(fout2, "123,,\n");
+//     fprintf(fout2, ",123,123\n");
+//   }
+// }
