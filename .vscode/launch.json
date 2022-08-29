@@ -2,8 +2,23 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "type": "lldb",
+      "request": "launch",
+      "name": "lldb",
+      "program": "${workspaceFolder}/BIN/${fileBasenameNoExtension}",
+      "args": [],
+      "cwd": "${fileDirname}",
+      "stopOnEntry": true,
+      //  "sourceMap": {
+      //    ".": "${workspaceFolder}/BIN/${fileBasenameNoExtension}"
+      //  }
+      // "preRunCommands": [
+      //   "breakpoint set -f e:\\CANOE\\GCC\\Source\\REMOTE\\CLOSE.C -l 12"
+      // ]
+    },
+    {
       "program": "",
-      "name": "Debug",
+      "name": "GDB",
       "type": "cppdbg",
       "request": "launch",
       "args": [],
@@ -11,16 +26,6 @@
       "cwd": "${fileDirname}",
       "environment": [],
       "externalConsole": false,
-      "linux": {
-        "MIMode": "gdb",
-        "miDebuggerPath": "gdb",
-        "program": "${workspaceFolder}/output/main"
-      },
-      "osx": {
-        "MIMode": "lldb",
-        "miDebuggerPath": "lldb-mi",
-        "program": "${workspaceFolder}/output/main"
-      },
       "windows": {
         "MIMode": "gdb",
         "miDebuggerPath": "gdb.exe",

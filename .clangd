@@ -1,0 +1,27 @@
+Diagnostics:
+  ClangTidy:
+    Add: [readability-identifier*]
+    CheckOptions:
+      readability-identifier-naming.VariableCase: camelBack
+
+      readability-identifier-naming.GlobalVariableCase: CamelCase
+      readability-identifier-naming.GlobalVariablePrefix: g
+
+      readability-identifier-naming.MemberPrefix: m
+      readability-identifier-naming.MemberCase: CamelCase
+      readability-identifier-naming.ClassMemberPrefix: m
+      readability-identifier-naming.ClassMemberCase: CamelCase
+
+      readability-identifier-naming.EnumCase: UPPER_CASE
+      readability-identifier-naming.EnumConstantCase: UPPER_CASE
+      readability-identifier-naming.MacroDefinitionCase: UPPER_CASE
+
+      readability-identifier-naming.ClassCase: CamelCase
+      readability-identifier-naming.StructCase: lower_case
+
+      readability-identifier-naming.FunctionCase: lower_case
+      readability-identifier-naming.ClassMethodCase: camelBack
+      readability-identifier-naming.MethodCase: camelBack
+
+      readability-identifier-naming.ConstantCase: CamelCase
+      readability-identifier-naming.ConstantPrefix: k

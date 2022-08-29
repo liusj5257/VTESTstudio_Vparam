@@ -7,13 +7,13 @@ char PATH_OUT[__CHAR_BUFFER] = "../../Release/";
 int main(int argc, char* argv[])
 {
   // fpath(a, b, a2);
-  path(fname, PATH_IN, PATH_OUT);    //?Â·¾¶
-  init_N(fin2);                      //?³õÊ¼»¯N
-  init_str_M(c, __CHAR_BUFFER, fin); //?¶ÁÈ¡Ç°ÖÃ¶¨ÒåÒÔ¼°³õÊ¼»¯M
-  int** tt = init_data(N, M + 1);    //*½¨Á¢Êı¾İ¿â
-  input_data(fin, tt);               //?¶ÁÈ¡Êı¾İ
-  adjust_data(tt);                   //?µ÷ÕûÊı¾İ
-  output_data(fout, tt);             //!Êä³öÎÄ¼ş
+  path(fname, PATH_IN, PATH_OUT);    //?åˆå§‹åŒ–è·¯å¾„
+  init_N(fin2);                      //?åˆå§‹åŒ–N
+  init_str_M(c, __CHAR_BUFFER, fin); //?åˆå§‹åŒ–M
+  int** tt = init_data(N, M + 1);    //*
+  input_data(fin, tt);               //?
+  adjust_data(tt);                   //?
+  output_data(fout, tt);             //!
   return 0;
 }
 
