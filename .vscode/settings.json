@@ -1,4 +1,487 @@
 {
+  "workbench.iconTheme": "vscode-icons",
+  "winopacity.opacity": 255,
+  "codesnap.containerPadding": "6em",
+  "codesnap.realLineNumbers": true,
+  "[c]": {
+    "editor.defaultFormatter": "xaver.clang-format"
+  },
+  "editor.fontSize": 20,
+  "editor.accessibilitySupport": "off",
+  "code-runner.runInTerminal": true,
+  "code-runner.saveFileBeforeRun": true,
+  "code-runner.preserveFocus": false,
+  "terminal.integrated.defaultProfile.linux": "fish",
+  //"clangd.arguments": [
+  //  "--header-insertion=never"
+  //],
+  //"editor.bracketPairColorization.enabled": true,
+  "editor.suggest.preview": true,
+  "glassit.alpha": 255,
+  //默认打开方式
+  "workbench.editorAssociations": {
+    "*.pex": "default",
+    "*.csv": "default"
+  },
+  "workbench.colorTheme": "Tiny Light",
+  "glassit.step": 10,
+  //"editor.formatOnPaste": true,
+  "editor.defaultFormatter": "xaver.clang-format",
+  "C_Cpp.autocompleteAddParentheses": true,
+  "security.workspace.trust.untrustedFiles": "open",
+  "editor.guides.indentation": false,
+  //"explorer.confirmDelete": false,
+  //"explorer.confirmDragAndDrop": false,
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  //"files.autoSave": "onFocusChange",
+  //"editor.formatOnSave": true,
+  "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+  "indentRainbow.colors": [
+    //!颜色
+    "rgba(79,236,236,0.2)",
+    "rgba(127,255,127,0.2)",
+    "#fb8a354c",
+    "rgba(255,127,255,0.2)",
+    // "#2796e04c",
+    // "#52bd3e4c",
+    // "#fb8a354c",
+    // "#a851c74c"
+  ],
+  "cSpell.userWords": [
+    "autofetch",
+    "clangd",
+    "cmake",
+    "fout",
+    "hexeditor",
+    "INVAILD",
+    "leetcode",
+    "Speedvalid",
+    "Struct",
+    "taigatests",
+    "vparam",
+    "xaver"
+  ],
+  "better-comments.highlightPlainText": true,
+  "better-comments.tags": [
+    {
+      "tag": "!",
+      "color": "#FF2D00",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": true,
+      "italic": false
+    },
+    {
+      "tag": "！",
+      "color": "#FF2D00",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": true,
+      "italic": false
+    },
+    {
+      "tag": "?",
+      "color": "#3498DB",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": true,
+      "italic": false
+    },
+    {
+      "tag": "？",
+      "color": "#3498DB",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": true,
+      "italic": false
+    },
+    {
+      "tag": "//",
+      "color": "#474747",
+      "strikethrough": true,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": true,
+      "italic": false
+    },
+    {
+      "tag": "todo",
+      "color": "#FF8C00",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": true,
+      "italic": false
+    },
+    {
+      "tag": "*",
+      "color": "#000000",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    }
+  ],
+  "doxdocgen.file.versionTag": "?@version 0.1",
+  "doxdocgen.c.commentPrefix": "**",
+  "doxdocgen.c.lastLine": "**/",
+  "code-runner.clearPreviousOutput": true,
+  "typescript.suggest.paths": false,
+  "javascript.suggest.paths": false,
+  "path-autocomplete.pathMappings": {},
+  "path-autocomplete.transformations": [],
+  "git.path": "C:/Program Files/Git/bin/git.exe",
+  "launch": {
+    "cwd": "${fileDirname}/",
+    "configurations": [],
+    "compounds": []
+  },
+  "C_Cpp.default.compilerPath": "C:\\mingw64\\bin\\g++.exe",
+  //"grunt.autoDetect": "on",
+  "path-prompt.excludedItems": {},
+  "path-prompt.pathMappings": {},
+  "git.autofetch": true,
+  "clang-format.fallbackStyle": "Google",
+  "C_Cpp.commentContinuationPatterns": [
+    "/**"
+  ],
+  "clangd.path": "C:\\mingw64\\bin\\clangd",
+  "editor.unicodeHighlight.ambiguousCharacters": false,
+  // 控制是否应在调试控制台中输入时接受建议; enter 还用于评估调试控制台中键入的任何内容
+  "debug.console.acceptSuggestionOnEnter": "on",
+  // 控制何时打开内部调试控制台
+  "debug.internalConsoleOptions": "neverOpen",
+  // 不允许 Enter 键处理输入时建议，避免换行与接受建议间的歧义
+  // 你也可以允许该项，使用 Ctrl + Enter 进行换行
+  "editor.acceptSuggestionOnEnter": "off",
+  // 控制编辑器应当自动改写左引号或右引号
+  "editor.autoClosingOvertype": "always",
+  // 粘贴时格式化文件
+  "editor.formatOnPaste": true,
+  // 保存时格式化文件
+  "editor.formatOnSave": true,
+  // 在编辑器中自动显示内联建议
+  "editor.inlineSuggest.enabled": true,
+  // 是否在输入时显示含有参数文档和类型信息的小面板
+  "editor.parameterHints.enabled": true,
+  // 控制是否在键入代码时自动显示建议
+  "editor.quickSuggestions": {
+    // 键入注释时不允许
+    "comments": false,
+    // 键入其他时允许
+    "other": true,
+    // 键入字符串时不允许
+    "strings": false
+  },
+  // 控制显示快速建议前的等待时间（毫秒）
+  "editor.quickSuggestionsDelay": 0,
+  // 代码片段建议置于其他建议之下
+  "editor.snippetSuggestions": "bottom",
+  // 使用空格缩进时模拟制表符的行为，可以方便对齐
+  "editor.stickyTabStops": true,
+  // 控制排序时是否提高靠近光标的词语的优先级
+  "editor.suggest.localityBonus": true,
+  "editor.suggest.shareSuggestSelections": true,
+  // 控制建议小部件底部的状态栏可见
+  "editor.suggest.showStatusBar": true,
+  // 控制在键入触发字符后是否自动显示建议
+  "editor.suggestOnTriggerCharacters": true,
+  // 始终预先选择第一个建议
+  "editor.suggestSelection": "recentlyUsedByPrefix",
+  // 一个制表符 = 2个空格
+  "editor.tabSize": 2,
+  // 控制是否根据文档中的文字提供建议列表
+  "editor.wordBasedSuggestions": true,
+  // 把文件删除时无需确认
+  "explorer.confirmDelete": false,
+  // 移动文件时无需确认
+  "explorer.confirmDragAndDrop": false,
+  // 粘贴同名文件时的重命名方式
+  // smart: 在重复名称末尾智能地添加/递增数字
+  "explorer.incrementalNaming": "smart",
+  // 忽略扩展建议的通知
+  "extensions.ignoreRecommendations": true,
+  // 自动保存
+  "files.autoSave": "afterDelay",
+  // 自动保存的等待时间（毫秒）
+  "files.autoSaveDelay": 1000,
+  // 配置排除的文件和文件夹的glob模式
+  // 文件资源管理器将根据此设置决定要显示或隐藏的文件和文件夹
+  // "files.exclude": {
+  //   "**/.classpath": true,
+  //   "**/.factorypath": true,
+  //   "**/.project": true,
+  //   "**/.settings": true
+  // },
+  // 在会话间记住未保存的文件，以允许在退出编辑器时跳过保存提示
+  // 应该在何处显示单元格工具栏，或是否隐藏它
+  "notebook.cellToolbarLocation": {
+    // 默认: 右边
+    "default": "right",
+    // jupyter-notebook: 左边
+    "jupyter-notebook": "left"
+  },
+  // 控制单元格编辑器中行号的显示
+  "notebook.lineNumbers": "on",
+  // 配置在搜索中排除的文件和文件夹的glob模式
+  "search.exclude": {
+    // "someFolder/": true,
+    // "somefile": true
+  },
+  // 显示搜索结果所在行号
+  "search.showLineNumbers": true,
+  // 当搜索词为小写时，则不区分大小写进行搜索
+  // 否则区分大小写
+  "search.smartCase": true,
+  // 集成终端默认为 PowerShell
+  "terminal.integrated.defaultProfile.windows": "PowerShell",
+  // 集成终端启用视觉化铃声
+  "terminal.integrated.enableBell": true,
+  // 集成终端编码: zh_CN.UTF-8
+  "terminal.integrated.env.windows": {
+    "LC_ALL": "zh_CN.UTF-8"
+  },
+  // 集成终端使用GPU加速
+  "terminal.integrated.gpuAcceleration": "on",
+  // 集成终端设置
+  "terminal.integrated.profiles.windows": {
+    "Command Prompt": {
+      "args": [
+        "-NoExit",
+        "/K",
+        "chcp 65001"
+      ],
+      "icon": "terminal-cmd",
+      "path": [
+        "${env:windir}\\Sysnative\\cmd.exe",
+        "${env:windir}\\System32\\cmd.exe"
+      ]
+    },
+    "Git Bash": {
+      "source": "Git Bash"
+    },
+    "Msys2": {
+      "args": [
+        "-defterm",
+        "-no-start",
+        "-here"
+      ],
+      "env": {
+        "CHERE_INVOKING": "1",
+        "MSYS2_PATH_TYPE": "inherit",
+        "MSYSTEM": "CLANG64"
+      },
+      "path": [
+        "C:\\msys64\\msys2_shell.cmd"
+      ]
+    },
+    "PowerShell": {
+      "icon": "terminal-powershell",
+      "source": "PowerShell",
+      "args": [
+        "-NoExit",
+        "/C",
+        "chcp 65001"
+      ]
+    }
+  },
+  // 集成终端右击时选择光标下方的字词，并打开上下文菜单
+  "terminal.integrated.rightClickBehavior": "selectWord",
+  /**********
+"editor.suggest.snippetsPreventQuickSuggestions": true,
+  /*********
+   * CMake *
+   *********/
+  // 保存 cmake.sourceDirectory 或 CMakeLists.txt 内容时，不自动配置 CMake 项目目录
+  "cmake.configureOnEdit": false,
+  // 在 CMake 项目目录打开时自动对其进行配置
+  "cmake.configureOnOpen": true,
+  // 成功配置后，将 compile_commands.json 复制到此位置
+  "cmake.copyCompileCommands": "",
+  /********
+   * LLDB *
+   ********/
+  // LLDB 指令自动补全
+  "lldb.commandCompletions": true,
+  // LLDB 指针显示解引用内容
+  "lldb.dereferencePointers": true,
+  // LLDB 鼠标悬停在变量上时预览变量值
+  "lldb.evaluateForHovers": true,
+  // LLDB 监视表达式的默认类型
+  "lldb.launch.expressions": "simple",
+  // LLDB 不显示汇编代码
+  "lldb.showDisassembly": "never",
+  // LLDB 生成更详细的日志
+  "lldb.verboseLogging": true,
+  /*******
+   * Git *
+   *******/
+  // 自动从当前 Git 存储库的默认远程库提取提交
+  //"git.autofetch": true,
+  // 同步 Git 存储库前确认
+  "git.confirmSync": false,
+  // 没有暂存的更改时，直接提交全部更改
+  "git.enableSmartCommit": true,
+  /********
+   * Font *
+   ********/
+  // 输出窗口
+  "[Log]": {
+    // 字体大小
+    //  "editor.fontSize": 15
+  },
+  // CodeLens的字体系列: Fira Code Retina
+  "editor.codeLensFontFamily": "Fira Code Retina",
+  // 字体系列: Fira Code Retina
+  "editor.fontFamily": "Fira Code Retina",
+  // 启用连字体
+  "editor.fontLigatures": true,
+  // 字体大小
+  //"editor.fontSize": 16,
+  // 集成终端字体大小
+  "terminal.integrated.fontSize": 14,
+  "terminal.integrated.fontFamily": "monospace",
+  // 启用括号指导线
+  "editor.guides.bracketPairs": true,
+  // 语义高亮
+  "editor.semanticHighlighting.enabled": true,
+  // 语义高亮自定义
+  // "editor.semanticTokenColorCustomizations": {
+  //   "enabled": false,
+  //   "rules": {
+  //     // 抽象符号
+  //     "*.abstract": {
+  //       "fontStyle": "italic"
+  //     },
+  //     // 只读量等效为宏
+  //     "readonly": "#4FC1FF",
+  //     // 静态量（静态变量，静态函数）
+  //     "*.static": {
+  //       "fontStyle": "bold"
+  //     },
+  //     // 宏
+  //     "macro": {
+  //       // "foreground": "#8F5DAF"
+  //       "foreground": "#4FC1FF"
+  //     },
+  //     // 成员函数
+  //     "method": {
+  //       "fontStyle": "underline"
+  //     },
+  //     // 命名空间
+  //     "namespace": {
+  //       "foreground": "#00D780"
+  //     },
+  //     // 函数参数
+  //     "parameter": {
+  //       "foreground": "#C8ECFF"
+  //     },
+  //     // 只读的函数参数
+  //     "parameter.readonly": {
+  //       "foreground": "#7BD1FF"
+  //     },
+  //     // 成员变量，似乎需要clangd12以上
+  //     "property": {
+  //       "fontStyle": "underline",
+  //       "foreground": "#C8ECFF"
+  //     },
+  //     // 类型参数
+  //     "typeParameter": "#31A567",
+  //     // 未启用的宏
+  //     "comment": "#767BA6"
+  //   }
+  // },
+  //! 括号颜色
+  "workbench.colorCustomizations": {
+    "[Tiny Light]": {
+      "editorBracketHighlight.foreground1": "#2796e0",
+      "editorBracketHighlight.foreground2": "#52bd3e",
+      "editorBracketHighlight.foreground3": "#fb8a35",
+      "editorBracketHighlight.foreground4": "#a851c7"
+    }
+  },
+  "clangd.fallbackFlags": [
+    "-std=c++11",
+    "-I${workspaceFolder}/Include/",
+    "-I${workspaceFolder}/Bin/",
+    "-I${workspaceFolder}/Iib/",
+    "-I${workspaceFolder}",
+  ],
+  "cSpell.languageSettings": [],
+  "C_Cpp.default.cppStandard": "c++20",
+  "C_Cpp.default.cStandard": "c17",
+  "C_Cpp.default.customConfigurationVariables": {},
+  "C_Cpp.formatting": "clangFormat",
+  "C_Cpp.intelliSenseEngineFallback": "Disabled",
+  "C_Cpp.codeAnalysis.clangTidy.enabled": true,
+  "[cmake]": {
+    "editor.defaultFormatter": "josetr.cmake-language-support-vscode"
+  },
+  "cmakeFormat.exePath": "C:\\Users\\LIU-S\\AppData\\Local\\Programs\\Python\\Python310\\Scripts\\cmake-format.exe",
+  "diffEditor.codeLens": true,
+  "C_Cpp.vcFormat.indent.braces": true,
+  "C_Cpp.vcFormat.indent.accessSpecifiers": true,
+  "C_Cpp.vcFormat.indent.caseContentsWhenBlock": true,
+  "C_Cpp.vcFormat.indent.caseLabels": true,
+  "[plaintext]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 4,
+    "editor.unicodeHighlight.ambiguousCharacters": false,
+    "editor.unicodeHighlight.invisibleCharacters": false
+  },
+  "leetcode.endpoint": "leetcode-cn",
+  "leetcode.hint.configWebviewMarkdown": false,
+  "leetcode.editor.shortcuts": [
+    "submit",
+    "test",
+    "star",
+    "solution",
+    "description"
+  ],
+  "leetcode.workspaceFolder": "F:\\C\\LeetCode",
+  "leetcode.hint.setDefaultLanguage": false,
+  "leetcode.hint.commandShortcut": false,
+  "leetcode.hint.commentDescription": false,
+  "[cpp]": {
+    "editor.defaultFormatter": "xaver.clang-format"
+  },
+  "window.commandCenter": true,
+  "hexeditor.columnWidth": 16,
+  "hexeditor.showDecodedText": true,
+  "hexeditor.defaultEndianness": "little",
+  "hexeditor.inspectorType": "aside",
+  "redhat.telemetry.enabled": true,
+  "xml.server.binary.trustedHashes": [
+    "a1bf296a5263bc63cca97cb46692d0d523edfe9d2d4e79d5b4d245f57c6c623b"
+  ],
+  "[lua]": {
+    "editor.defaultFormatter": "Koihik.vscode-lua-format"
+  },
+  "dotnetAcquisitionExtension.installTimeoutValue": 60000,
+  "dotnetAcquisitionExtension.existingDotnetPath": [],
+  "indentRainbow.colorOnWhiteSpaceOnly": true,
+  "indentRainbow.errorColor": "false",
+  "editor.renderWhitespace": "none",
+  "[csv]": {},
+  "files.autoGuessEncoding": true,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "csv-preview.hasHeaders": false,
+  "csv-preview.lineNumbers": "ordinal",
+  "csv-preview.formatValues": "never",
+  "csv-preview.resizeColumns": "all",
+  "C_Cpp.workspaceSymbols": "All",
+  "jake.autoDetect": "on",
+  "lldb.launch.cwd": "${fileDirname}",
+  "[yaml]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
   "files.associations": {
     "*.clang-format": "yaml",
     "OPEN_EOA_NORMAL.C": "cpp",
@@ -79,7 +562,6 @@
   "code-runner.fileDirectoryAsCwd": false,
   "C_Cpp.errorSquiggles": "Enabled",
   "editor.bracketPairColorization.enabled": true,
-  "editor.guides.bracketPairs": "active",
   /*GXT-Doxygen Documentation Generator插件使用-Begin*/
   "doxdocgen.generic.authorName": "LIU", //更改作者名
   "doxdocgen.generic.authorEmail": "NONE",
@@ -92,18 +574,6 @@
     }
   }, //更改邮箱
   /*GXT-Doxygen Documentation Generator插件使用-End*/
-  "clangd.fallbackFlags": [
-    "-std=c++11",
-    "-I${workspaceFolder}",
-    "-I${workspaceFolder}/F1_C/SOURCE/lib",
-  ],
-  "clang.cxxflags": [
-    "--target=x86_64-w64-mingw",
-    "-std=c++17",
-    "-Wall",
-    "-I<你的工程目录>",
-    "-I<Qt目录下你所调用库的所在路径>"
-  ],
   "cmake.sourceDirectory": "${workspaceFolder}/.",
   "cmake.generator": "MinGW Makefiles",
   "files.exclude": {
@@ -188,5 +658,4 @@
     "MIMode": "gdb",
     //"miDebuggerPath": "C:\\mingw64\\bin\\lldb.exe",
   },
-  "lldb.verboseLogging": true,
 }
