@@ -4,29 +4,27 @@ char gFname[] = __FILE__;
 
 int main()
 {
-  //?初始化路径
   path(gFname, gPathIn, gPathOut);
-  //?初始化N
   init_row(gFin);
-  //?读取前置定义以及初始化M
   init_str_column(gTempC, __CHAR_BUFFER, gFin);
-  //！建立数据库
   int** data = init_data(gRow, gColumn + 1);
-  //?读取数据
   input_data(gFin, data);
-  //?调整数据
   adjust_data(data);
-  //!输出文件
   output_data(gFout, data);
-  path2(gPathOut);
-  adjust_csv(gFout, data);
-  //!释放内存空间
+  adjust_csv(gPathOut, data);
   free(data);
   return 0;
 }
 
-void adjust_csv(FILE* gFout, int** data)
+void adjust_csv(char path_out[__CHAR_BUFFER], int** data)
 {
+  gFin = fopen(path_out, "r");
+  printf_s("\nVparam\n%s", path_out);
+  char* a = strrchr(path_out, '.');
+  strcpy(a, ".csv");
+  printf_s("\nReport\n%s", path_out);
+  gFout = fopen(path_out, "w+");
+
   char csv[gRow][4][__CHAR_BUFFER];
   char sts[9][__CHAR_BUFFER];
   strcpy(sts[0], "闭锁状态_");

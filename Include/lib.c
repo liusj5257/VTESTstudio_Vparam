@@ -8,11 +8,13 @@ const int kSix = 6;
 const int kNine = 9;
 
 char gTempC[__CHAR_BUFFER];
+//?前置相对路径
 char gPathIn[__CHAR_BUFFER] = "../../Resource/";
 char gPathOut[__CHAR_BUFFER] = "../../Release/";
 
 FILE* gFin = 0;
 FILE* gFout = 0;
+
 // FILE* fin2 = 0;
 //  FILE* fout2 = 0;
 
@@ -160,19 +162,8 @@ void path(char fname[__CHAR_BUFFER], char path_in[__CHAR_BUFFER],
   //?添加后缀
   strcat(path_in, (char*)".vparam");
   strcat(path_out, (char*)"_OUT.vparam");
-  printf("Data读取路径\n%s\n", path_in);
-  //！打开文件
   gFin = fopen(path_in, "r+");
-  // fin2 = fopen(path_in, "r+");
   gFout = fopen(path_out, "w+");
+  printf("Data读取路径\n%s\n", path_in);
 }
 
-void path2(char path_out[__CHAR_BUFFER])
-{
-  gFin = fopen(path_out, "r");
-  printf_s("\nVparam\n%s", path_out);
-  char* a = strrchr(path_out, '.');
-  strcpy(a, ".csv");
-  printf_s("\nReport\n%s", path_out);
-  gFout = fopen(path_out, "w+");
-}

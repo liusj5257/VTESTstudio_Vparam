@@ -21,14 +21,14 @@ extern void path(char fname[__CHAR_BUFFER], char path_in[__CHAR_BUFFER],
                  char path_out[__CHAR_BUFFER]);
 extern void init_row(FILE* file);
 extern void char_out(int** data);
-extern void path2(char path_out[__CHAR_BUFFER]);
-extern void adjust_csv(FILE* fout, int** data);
+
+extern void adjust_csv(char path_out[__CHAR_BUFFER], int** data);
 
 extern int gRow, gColumn;
-// extern int i, j;
-extern char gTempC[__CHAR_BUFFER]; //
+extern char gTempC[__CHAR_BUFFER];
 extern FILE* gFin;
 extern FILE* gFout;
+
 extern const int kSix;
 extern const int kNine;
 
