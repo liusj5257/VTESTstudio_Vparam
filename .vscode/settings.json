@@ -183,4 +183,10 @@
   "clangd.checkUpdates": true,
   // clangd的snippets有很多的跳转点，不用这个就必须手动触发Intellisense了
   "editor.suggest.snippetsPreventQuickSuggestions": false,
+  "cmake.debugConfig": {
+    "cwd": "${fileDirname}",
+    "MIMode": "gdb",
+    //"miDebuggerPath": "C:\\mingw64\\bin\\lldb.exe",
+  },
+  "lldb.verboseLogging": true,
 }

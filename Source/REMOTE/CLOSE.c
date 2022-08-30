@@ -1,27 +1,33 @@
 #include "lib.h"
 
-char fname[] = __FILE__;
-char PATH_IN[__CHAR_BUFFER] = "../../Resource/";
-char PATH_OUT[__CHAR_BUFFER] = "../../Release/";
+char gFname[] = __FILE__;
 
-int main(int argc, char* argv[])
+int main()
 {
-  // fpath(a, b, a2);
-  path(fname, PATH_IN, PATH_OUT);    //?路径
-  init_N(fin2);                      //?初始化N
-  init_str_M(c, __CHAR_BUFFER, fin); //?读取前置定义以及初始化M
-  int** tt = init_data(N, M + 1);    //*建立数据库
-  input_data(fin, tt);               //?读取数据
-  adjust_data(tt);                   //?调整数据
-  output_data(fout, tt);             //!输出文件
-  path2(PATH_OUT);
-  adjust_csv(fout, tt);
+  //?初始化路径
+  path(gFname, gPathIn, gPathOut);
+  //?初始化N
+  init_row(gFin);
+  //?读取前置定义以及初始化M
+  init_str_column(gTempC, __CHAR_BUFFER, gFin);
+  //！建立数据库
+  int** data = init_data(gRow, gColumn + 1);
+  //?读取数据
+  input_data(gFin, data);
+  //?调整数据
+  adjust_data(data);
+  //!输出文件
+  output_data(gFout, data);
+  path2(gPathOut);
+  adjust_csv(gFout, data);
+  //!释放内存空间
+  free(data);
   return 0;
 }
 
-void adjust_csv(FILE* fout, int** tt)
+void adjust_csv(FILE* gFout, int** data)
 {
-  char csv[N][4][__CHAR_BUFFER];
+  char csv[gRow][4][__CHAR_BUFFER];
   char sts[9][__CHAR_BUFFER];
   strcpy(sts[0], "闭锁状态_");
   strcpy(sts[1], "大于或等于设定高度_");
@@ -43,9 +49,9 @@ void adjust_csv(FILE* fout, int** tt)
   strcpy(bcm[6], "invalid_valid状态_");
   strcpy(bcm[7], "invalid状态_");
 
-  char speed_valid[2][40];
-  strcpy(speed_valid[0], "速度无效且");
-  strcpy(speed_valid[1], "速度有效且");
+  char speedValid[2][40];
+  strcpy(speedValid[0], "速度无效且");
+  strcpy(speedValid[1], "速度有效且");
 
   char speed[101][40];
   strcpy(speed[0], "\t0km/h");
@@ -78,65 +84,65 @@ void adjust_csv(FILE* fout, int** tt)
   strcpy(sig[1], "认证失败");
   strcpy(sig[2], "认证成功");
   strcpy(sig[3], "未认证");
-
-  for (i = 0; i < N; i++)
+  int i = 0;
+  for (i = 0; i < gRow; i++)
   {
-    int a = tt[i][0]; // sts
-    int b = tt[i][1]; // bcm
-    int c = tt[i][2]; // speedvalid
-    int d = tt[i][3]; // speed
-    int e = tt[i][4]; // sig
-    int f = tt[i][5]; // ctrl
-    int g = tt[i][6]; // target
+    int mapSts = data[i][0];        // sts
+    int mapBcm = data[i][1];        // bcm
+    int mapSpeedValid = data[i][2]; // speedvalid
+    int mapSpeed = data[i][3];      // speed
+    int mapSig = data[i][4];        // sig
+    int mapCtrl = data[i][5];       // ctrl
+    int mapTarget = data[i][6];     // target
 
     // Excel第一格
-    strcpy(csv[i][0], sts[a]);
-    strcat(csv[i][0], bcm[b]);
-    strcat(csv[i][0], ctrl[f]);
+    strcpy(csv[i][0], sts[mapSts]);
+    strcat(csv[i][0], bcm[mapBcm]);
+    strcat(csv[i][0], ctrl[mapCtrl]);
     // Excel第二格
-    strcat(csv[i][1], speed_valid[c]);
-    strcat(csv[i][1], speed[d]);
+    strcat(csv[i][1], speedValid[mapSpeedValid]);
+    strcat(csv[i][1], speed[mapSpeed]);
     strcat(csv[i][1], "\n");
-    strcat(csv[i][1], sig[e]);
+    strcat(csv[i][1], sig[mapSig]);
     strcat(csv[i][1],
            "\n处于正常工作电压范围\n无错误工况（如热保护、通讯故障等）");
     // Excel第三格
     strcpy(csv[i][2], "发送");
-    strcat(csv[i][2], ctrl[f]);
+    strcat(csv[i][2], ctrl[mapCtrl]);
     strcat(csv[i][2], "信号");
     // Excel第四格  结论
     // strcat_s(csv[i][1], "\"");
     // strcat_s(csv[i][1], speed_valid[c]);
     // strcat_s(csv[i][1], speed[d]);
 
-    fprintf(fout, "%s,\"%s\",%s,", csv[i][0], csv[i][1], csv[i][2]);
-    if (tt[i][M] == 0)
+    fprintf(gFout, "%s,\"%s\",%s,", csv[i][0], csv[i][1], csv[i][2]);
+    if (data[i][gColumn] == 0)
     {
-      fprintf(fout, "蜂鸣器间鸣，背门响应关闭至闭锁状态\n");
-    }
-    else if (tt[i][M] == 8)
-    {
-      fprintf(fout, "背门不响应远程指令\n");
+      fprintf(gFout, "蜂鸣器间鸣，背门响应关闭至闭锁状态\n");
     }
     else
-      fprintf(fout, "背门不响应远程指令\n");
+    {
+      fprintf(gFout, "背门不响应远程指令\n");
+    }
   }
 }
-void adjust_data(int** A)
+void adjust_data(int** data)
 {
-  for (i = 0; i < N; i++)
+  int i = 0;
+  for (i = 0; i < gRow; i++)
   {
-    if ((A[i][0] == 1 || A[i][0] == 4) && //! open stop
-        (A[i][1] == 0 || A[i][1] == 1 || A[i][1] == 7 ||
-         A[i][1] == 2 || //! speed power_mode
-         A[i][1] == 4 || (A[i][1] == 3 && A[i][3] < 5 && A[i][2] == 1)) &&
-        A[i][4] == 2) //! success
+    if ((data[i][0] == 1 || data[i][0] == 4) && //! open stop
+        (data[i][1] == 0 || data[i][1] == 1 || data[i][1] == 7 ||
+         data[i][1] == 2 || //! speed power_mode
+         data[i][1] == 4 ||
+         (data[i][1] == 3 && data[i][3] < 5 && data[i][2] == 1)) &&
+        data[i][4] == 2) //! success
     {
-      A[i][M] = 0;
+      data[i][gColumn] = 0;
     }
     else
     {
-      A[i][M] = A[i][0];
+      data[i][gColumn] = data[i][0];
     }
   }
 }
