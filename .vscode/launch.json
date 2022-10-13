@@ -17,6 +17,20 @@
         "program": "${workspaceFolder}/BIN/${fileBasenameNoExtension}"
       },
       //"preLaunchTask": "build"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "lldb",
+      "program": "${workspaceFolder}/BIN/${fileBasenameNoExtension}",
+      "args": [],
+      "cwd": "${fileDirname}",
+      "stopOnEntry": true,
+      "relativePathBase": "${workspaceFolder}/BIN/",
+      // "sourceMap": {
+      //   "/": "c:\\"
+      // }
+      //"Path":"C:\\Program Files\\LLVM\\bin"
     }
   ]
 }

@@ -4,7 +4,7 @@
   "codesnap.containerPadding": "6em",
   "codesnap.realLineNumbers": true,
   "[c]": {
-    "editor.defaultFormatter": "xaver.clang-format"
+    "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd"
   },
   "editor.fontSize": 20,
   "editor.accessibilitySupport": "off",
