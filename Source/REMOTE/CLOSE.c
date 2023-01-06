@@ -24,7 +24,7 @@ void adjust_csv(char path_out[__CHAR_BUFFER], int **data) {
   strcpy(a, ".csv");
   printf_s("\nReport\n%s", path_out);
   gFout = fopen(path_out, "w+");
-  //!用例个数，4个输出格子，字符串长度
+  //! 用例个数，4个输出格子，字符串长度
   char csv[gRow][4][__CHAR_BUFFER];
   int i = 0;
   for (i = 0; i < gRow; i++) {
@@ -51,9 +51,21 @@ void adjust_csv(char path_out[__CHAR_BUFFER], int **data) {
     strcat(csv[i][2], gState.mCtrl[mapCtrl]);
     strcat(csv[i][2], "信号");
     //! Excel第四格
-    if (data[i][gColumn] == 0) {
+    if ((data[i][0] == 1 || data[i][0] == 4) && //! open stop
+        (data[i][1] == 0 || data[i][1] == 1 || data[i][1] == 7 ||
+         data[i][1] == 2 || data[i][1] == 4 ||
+         (data[i][1] == 3 && data[i][3] < 5 && data[i][2] == 1)) &&
+        data[i][4] == 2) {
       strcpy(csv[i][3], gState.mResult[0]);
-    } else {
+    } else if ((data[i][0] == 8) && //! EOA
+               (data[i][1] == 0 || data[i][1] == 1 || data[i][1] == 7 ||
+                data[i][1] == 2 || data[i][1] == 4 ||
+                (data[i][1] == 3 && data[i][3] < 5 && data[i][2] == 1)) &&
+               data[i][4] == 2) {
+      strcpy(csv[i][3], gState.mResult[2]);
+    }
+
+    else {
       strcpy(csv[i][3], gState.mResult[1]);
     }
     //? csv 每个格子以“,”分割，一个格子包含多行用“"str"”。
@@ -71,7 +83,16 @@ void adjust_data(int **data) {
         data[i][4] == 2) //! success
     {
       data[i][gColumn] = 0;
-    } else {
+    } else if ((data[i][0] == 8) && //! EOA
+               (data[i][1] == 0 || data[i][1] == 1 || data[i][1] == 7 ||
+                data[i][1] == 2 || data[i][1] == 4 ||
+                (data[i][1] == 3 && data[i][3] < 5 && data[i][2] == 1)) &&
+               data[i][4] == 2) //! success
+    {
+      data[i][gColumn] = 4;
+    }
+
+    else {
       data[i][gColumn] = data[i][0];
     }
   }

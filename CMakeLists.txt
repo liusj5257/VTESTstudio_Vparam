@@ -4,28 +4,28 @@ project(cmaketest VERSION 0.1.0)
 # Enable C++11
 add_compile_options(-std=c11 -v)
 
-# ÉèÖÃexeÊä³öÄ¿Â¼
+# è®¾ç½®exeè¾“å‡ºç›®å½•
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_SOURCE_DIR}/bin)
 
-# ÉèÖÃ¾²Ì¬libÊä³öÄ¿Â¼
+# è®¾ç½®é™æ€libè¾“å‡ºç›®å½•
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/lib)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/lib)
 
-# Ä£Ê½£ºDEBUG
+# æ¨¡å¼ï¼šDEBUG
 set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS "Debug")
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/Include/)
 
-# ÉèÖÃ¿âÂ·¾¶
+# è®¾ç½®åº“è·¯å¾„
 file(GLOB LIB_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/Include/*.c)
 file(GLOB LIB_HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/Include/*.h)
 
-# add_library(YourLib SHARED ${LIB_SOURCES} ${LIB_HEADERS} )#¶¯Ì¬dll
+# add_library(YourLib SHARED ${LIB_SOURCES} ${LIB_HEADERS} )#åŠ¨æ€dll
 # link_directories(${CMAKE_CURRENT_SOURCE_DIR}/lib)
 
-# Ìí¼ÓCMAKE×ÓÄ¿Â¼
+# æ·»åŠ CMAKEå­ç›®å½•
 add_subdirectory(Include)
 
-# ¿â±äÁ¿
+# åº“å˜é‡
 find_library(static_lib lib_MY ${CMAKE_SOURCE_DIR}/lib)
 
 # Find all main*.cpp files and store in list mains
@@ -34,7 +34,7 @@ file(
   RELATIVE "${CMAKE_CURRENT_SOURCE_DIR}/Source/**/"
   "${CMAKE_CURRENT_SOURCE_DIR}/Source/**/*.c")
 
-#ÒªÏÈÉú³ÉlibÔÙÌí¼ÓÏÂ·½´úÂë
+# è¦å…ˆç”Ÿæˆlibå†æ·»åŠ ä¸‹æ–¹ä»£ç 
 foreach(mainfile IN LISTS mains)
   # Get file name without directory
   get_filename_component(mainname ${mainfile} NAME_WE)

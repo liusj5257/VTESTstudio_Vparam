@@ -21,7 +21,7 @@
   //默认打开方式
   "workbench.editorAssociations": {
     "*.pex": "default",
-    "*.csv": "default"
+    "*.csv": "gc-excelviewer-csv-editor"
   },
   "workbench.colorTheme": "Tiny Light",
   "glassit.step": 10,
@@ -130,7 +130,7 @@
     }
   ],
   "doxdocgen.file.versionTag": "?@version 0.1",
-  "doxdocgen.c.commentPrefix": "**",
+  "doxdocgen.c.commentPrefix": "*",
   "doxdocgen.c.lastLine": "**/",
   "code-runner.clearPreviousOutput": true,
   "typescript.suggest.paths": false,
@@ -152,7 +152,7 @@
   "C_Cpp.commentContinuationPatterns": [
     "/**"
   ],
-  "clangd.path": "C:\\mingw64\\bin\\clangd",
+  "clangd.path": "C:\\mingw64\\bin\\clangd.exe",
   "editor.unicodeHighlight.ambiguousCharacters": false,
   // 控制是否应在调试控制台中输入时接受建议; enter 还用于评估调试控制台中键入的任何内容
   "debug.console.acceptSuggestionOnEnter": "on",
@@ -422,7 +422,7 @@
   "C_Cpp.intelliSenseEngineFallback": "Disabled",
   "C_Cpp.codeAnalysis.clangTidy.enabled": true,
   "[cmake]": {
-    "editor.defaultFormatter": "josetr.cmake-language-support-vscode"
+    "editor.defaultFormatter": "cheshirekow.cmake-format"
   },
   "cmakeFormat.exePath": "C:\\Users\\LIU-S\\AppData\\Local\\Programs\\Python\\Python310\\Scripts\\cmake-format.exe",
   "diffEditor.codeLens": true,
@@ -548,7 +548,7 @@
   "editor.bracketPairColorization.enabled": true,
   /*GXT-Doxygen Documentation Generator插件使用-Begin*/
   "doxdocgen.generic.authorName": "LIU", //更改作者名
-  "doxdocgen.generic.authorEmail": "NONE",
+  "doxdocgen.generic.authorEmail": "liu_shaojun@outlook.com",
   "cSpell.customDictionaries": {
     "custom-dictionary-workspace": {
       "name": "custom-dictionary-workspace",

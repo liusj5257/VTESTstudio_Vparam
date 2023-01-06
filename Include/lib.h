@@ -33,7 +33,10 @@ extern char gPathOut[__CHAR_BUFFER];
 
 extern FILE* gFin;
 extern FILE* gFout;
-
+/**
+**@brief 定义测试类型,区分CSV测试结论
+**
+**/
 enum FUNCTIONS
 {
   REMOTE_CLOSE,
@@ -41,6 +44,10 @@ enum FUNCTIONS
   QUERY
 };
 extern enum FUNCTIONS gFunction;
+/**
+**@brief 定义CSV通用字符串
+**
+**/
 typedef struct states
 {
   char mSts[9][__CHAR_BUFFER];
