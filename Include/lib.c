@@ -8,6 +8,9 @@ const int kSix = 6;
 const int kNine = 9;
 
 char gTempC[__CHAR_BUFFER];
+/**
+ *@brief 定义全局字符串,输入输出文件路径
+ **/
 char gPathIn[__CHAR_BUFFER] = "../../Resource/";
 char gPathOut[__CHAR_BUFFER] = "../../Release/";
 

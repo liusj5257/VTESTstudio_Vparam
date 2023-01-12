@@ -10,9 +10,9 @@
  **/
 
 #include "lib.h"
+
 /**
- *@brief
- *?读取文件地址名称并存为全局字符串
+ *@brief 读取当前文件路径名字
  **/
 char gFname[] = __FILE__;
 
