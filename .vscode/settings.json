@@ -642,4 +642,7 @@
     "MIMode": "gdb",
     //"miDebuggerPath": "C:\\mingw64\\bin\\lldb.exe",
   },
+  "[ignore]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
 }

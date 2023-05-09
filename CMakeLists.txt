@@ -22,6 +22,11 @@ file(GLOB LIB_HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/Include/*.h)
 # add_library(YourLib SHARED ${LIB_SOURCES} ${LIB_HEADERS} )#动态dll
 # link_directories(${CMAKE_CURRENT_SOURCE_DIR}/lib)
 
+add_library(lib_MY SHARED ${LIB_SOURCES} ${LIB_HEADERS})
+set_target_properties(
+  lib_MY PROPERTIES OUTPUT_NAME "_MY" RUNTIME_OUTPUT_DIRECTORY
+                                      ${CMAKE_SOURCE_DIR}/bin)
+
 # 添加CMAKE子目录
 add_subdirectory(Include)
 
@@ -40,4 +45,5 @@ foreach(mainfile IN LISTS mains)
   get_filename_component(mainname ${mainfile} NAME_WE)
   add_executable(${mainname} ${CMAKE_CURRENT_SOURCE_DIR}/Source/**/${mainfile})
   target_link_libraries(${mainname} ${static_lib})
+  add_dependencies(${mainname} lib_MY)
 endforeach()

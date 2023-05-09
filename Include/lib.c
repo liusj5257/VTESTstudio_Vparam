@@ -39,7 +39,7 @@ int **init_data(int gRow, int gColumn) {
   int i = 0;
   int j = 0;
   // int** data = new int*[gRow];
-  //!内存分配一个包含 gRow 个int型指针的数组
+  //! 内存分配一个包含 gRow 个int型指针的数组
   int **data = (int **)malloc(sizeof(int *) * gRow);
   for (int i = 0; i < gRow; ++i) {
     data[i] = (int *)malloc(sizeof(int) * gColumn);
@@ -60,7 +60,7 @@ void init_row(FILE *file) {
       gRow++; /* code */
     }
   }
-  //！实际列数
+  // ！实际行数
   gRow -= kNine;
   printf("gRow = %d\t", gRow);
   rewind(file);
@@ -127,11 +127,11 @@ void input_data(FILE *fin, int **data) {
 
 void path(char fname[__CHAR_BUFFER], char path_in[__CHAR_BUFFER],
           char path_out[__CHAR_BUFFER]) {
-  //？截取路径
+  // ？截取路径
   char *cutFname = strstr(fname, "e\\") + 2;
   char *tempC = strrchr(cutFname, '\\');
   *tempC = '/';
-  //？组合路径
+  // ？组合路径
   strcat(path_in, cutFname);
   strcat(path_out, cutFname);
   //?删除.c后缀
